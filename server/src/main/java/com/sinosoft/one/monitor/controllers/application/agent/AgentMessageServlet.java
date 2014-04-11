@@ -20,10 +20,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ResourceBundle;
 import java.util.concurrent.BlockingQueue;
 import java.util.zip.Inflater;
 
@@ -43,9 +45,42 @@ public class AgentMessageServlet extends HttpServlet {
 
     private Schema<TraceLog> schema;
 
+    private long limitEndTime = 0;
+
+    private String limitEndTimeStr = "";
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
+    boolean canRun = false;
+
+    private void setLimitEndTime(){
+
+        URL url = this.getClass().getClassLoader().getResource("META-INF/serial");
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(url.getFile()));
+            String serialCode = reader.readLine().trim();
+            limitEndTimeStr = Integer.valueOf(serialCode, 16)+"".trim();
+            limitEndTime = sdf.parse(limitEndTimeStr).getTime();
+            logger.warn("产品到期日：" + limitEndTimeStr);
+            canRun = true;
+        }catch (Exception e){
+            logger.error("没有找到文件：serial，或serial码不正确！");
+        }finally {
+            if (reader!=null){
+                try {
+                    reader.close();
+                } catch (IOException e) {}
+            }
+        }
+    }
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+
+        setLimitEndTime();
+
         ExplicitIdStrategy.Registry r = new ExplicitIdStrategy.Registry();
         r = r.registerPojo(TraceLog.class,1);
         r = r.registerPojo(UrlTraceLog.class,2);
@@ -64,6 +99,21 @@ public class AgentMessageServlet extends HttpServlet {
             throws ServletException, IOException
     {
         long start = System.currentTimeMillis();
+
+        if (canRun){
+            //如果过期则返回
+            if (start>limitEndTime){
+                logger.error("监控产品试用已到期,到期日："+limitEndTimeStr);
+                //设置为不可运行
+                canRun = false;
+                return;
+            }
+        } else {
+            //不可运行重新加载文件
+            setLimitEndTime();
+            return;
+        }
+
         DataInputStream input = new DataInputStream(request.getInputStream());
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         byte[] data = null;
