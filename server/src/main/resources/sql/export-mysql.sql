@@ -11,14 +11,14 @@
 	CREATE_TIME timestamp, 
 	STATUS VARCHAR(50)
    );
-   alter table ge_monitor_account modify column ID VARCHAR(32) comment 'ÓÃ»§ID';
-   alter table ge_monitor_account modify column LOGIN_NAME VARCHAR(100) comment 'µÇÂ¼Ãû';
-   alter table ge_monitor_account modify column PASSWORD varchar(50) comment 'ÃÜÂë';
-   alter table ge_monitor_account modify column NAME VARCHAR(50) comment 'ÓÃ»§Ãû';
-   alter table ge_monitor_account modify column EMAIL VARCHAR(100) comment 'ÓÊÏä';
-   alter table ge_monitor_account modify column PHONE VARCHAR(30) comment 'µç»°';
-   alter table ge_monitor_account modify column CREATE_TIME timestamp comment '¸üĞÂÊ±¼ä';
-   alter table ge_monitor_account modify column STATUS VARCHAR(50) comment '×´Ì¬';
+   alter table ge_monitor_account modify column ID VARCHAR(32) comment 'ç”¨æˆ·ID';
+   alter table ge_monitor_account modify column LOGIN_NAME VARCHAR(100) comment 'ç™»å½•å';
+   alter table ge_monitor_account modify column PASSWORD varchar(50) comment 'å¯†ç ';
+   alter table ge_monitor_account modify column NAME VARCHAR(50) comment 'ç”¨æˆ·å';
+   alter table ge_monitor_account modify column EMAIL VARCHAR(100) comment 'é‚®ç®±';
+   alter table ge_monitor_account modify column PHONE VARCHAR(30) comment 'ç”µè¯';
+   alter table ge_monitor_account modify column CREATE_TIME timestamp comment 'æ›´æ–°æ—¶é—´';
+   alter table ge_monitor_account modify column STATUS VARCHAR(50) comment 'çŠ¶æ€';
 
 
   CREATE TABLE ge_monitor_account_auth 
@@ -28,10 +28,10 @@
 	ROLE VARCHAR(10)
    ) ;
 
-   alter table ge_monitor_account_auth modify column ID VARCHAR(32) comment 'ÊÚÈ¨id';
-   alter table ge_monitor_account_auth modify column ACCOUNT_ID VARCHAR(32) comment 'ÓÃ»§ID';
-   alter table ge_monitor_account_auth modify column ROLE VARCHAR(10) comment '½ÇÉ«';
-   alter table ge_monitor_account_auth comment 'ÓÃ»§ÊÚÈ¨±í';
+   alter table ge_monitor_account_auth modify column ID VARCHAR(32) comment 'æˆæƒid';
+   alter table ge_monitor_account_auth modify column ACCOUNT_ID VARCHAR(32) comment 'ç”¨æˆ·ID';
+   alter table ge_monitor_account_auth modify column ROLE VARCHAR(10) comment 'è§’è‰²';
+   alter table ge_monitor_account_auth comment 'ç”¨æˆ·æˆæƒè¡¨';
 
 
   CREATE TABLE ge_monitor_alarm 
@@ -49,18 +49,18 @@
 	SUB_RESOURCE_ID VARCHAR(32)
    ) ;
 
-   alter table ge_monitor_alarm modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_alarm modify column SEVERITY VARCHAR(20) comment 'ÑÏÖØ¼¶±ğ(severity)';
-   alter table ge_monitor_alarm modify column MESSAGE VARCHAR(3000) comment '¾¯±¨ĞÅÏ¢(message)';
-   alter table ge_monitor_alarm modify column ALARM_SOURCE VARCHAR(20) comment '¾¯±¨À´Ô´(ÈÕÖ¾,Òì³£)';
-   alter table ge_monitor_alarm modify column MONITOR_ID VARCHAR(32) comment '¼àÊÓÆ÷ID';
-   alter table ge_monitor_alarm modify column MONITOR_TYPE VARCHAR(50) comment '¼àÊÓÆ÷ÀàĞÍ';
-   alter table ge_monitor_alarm modify column ATTRIBUTE_ID VARCHAR(32) comment 'ÊôĞÔID';
-   alter table ge_monitor_alarm modify column CREATE_TIME timestamp comment '´´½¨Ê±¼ä(createtime)';
-   alter table ge_monitor_alarm modify column OWNER_NAME VARCHAR(100) comment 'ËùÓĞÕß(ownername)';
-   alter table ge_monitor_alarm modify column SUB_RESOURCE_TYPE VARCHAR(32) comment '×Ó×ÊÔ´ÀàĞÍ';
-   alter table ge_monitor_alarm modify column SUB_RESOURCE_ID VARCHAR(32) comment '×Ó×ÊÔ´ID';
-   alter table ge_monitor_alarm comment 'Ó¦ÓÃÏµÍ³Ô¤¾¯ĞÅÏ¢±í';
+   alter table ge_monitor_alarm modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_alarm modify column SEVERITY VARCHAR(20) comment 'ä¸¥é‡çº§åˆ«(severity)';
+   alter table ge_monitor_alarm modify column MESSAGE VARCHAR(3000) comment 'è­¦æŠ¥ä¿¡æ¯(message)';
+   alter table ge_monitor_alarm modify column ALARM_SOURCE VARCHAR(20) comment 'è­¦æŠ¥æ¥æº(æ—¥å¿—,å¼‚å¸¸)';
+   alter table ge_monitor_alarm modify column MONITOR_ID VARCHAR(32) comment 'ç›‘è§†å™¨ID';
+   alter table ge_monitor_alarm modify column MONITOR_TYPE VARCHAR(50) comment 'ç›‘è§†å™¨ç±»å‹';
+   alter table ge_monitor_alarm modify column ATTRIBUTE_ID VARCHAR(32) comment 'å±æ€§ID';
+   alter table ge_monitor_alarm modify column CREATE_TIME timestamp comment 'åˆ›å»ºæ—¶é—´(createtime)';
+   alter table ge_monitor_alarm modify column OWNER_NAME VARCHAR(100) comment 'æ‰€æœ‰è€…(ownername)';
+   alter table ge_monitor_alarm modify column SUB_RESOURCE_TYPE VARCHAR(32) comment 'å­èµ„æºç±»å‹';
+   alter table ge_monitor_alarm modify column SUB_RESOURCE_ID VARCHAR(32) comment 'å­èµ„æºID';
+   alter table ge_monitor_alarm comment 'åº”ç”¨ç³»ç»Ÿé¢„è­¦ä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_application 
@@ -78,16 +78,16 @@
 	`INTERVAL` decimal(10,0) 
    ) ;
 
-   alter table ge_monitor_application modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_application modify column APPLICATION_NAME VARCHAR(100) comment 'Ó¦ÓÃÏµÍ³Ó¢ÎÄÃû³Æ';
-   alter table ge_monitor_application modify column CN_NAME VARCHAR(300) comment 'Ó¦ÓÃÏµÍ³ÖĞÎÄÃû³Æ';
-   alter table ge_monitor_application modify column CREATE_TIME timestamp comment '´´½¨Ê±¼ä';
-   alter table ge_monitor_application modify column CREATOR_ID VARCHAR(32) comment '´´½¨ÈËID';
-   alter table ge_monitor_application modify column MODIFY_TIME timestamp comment 'ĞŞ¸ÄÊ±¼ä';
-   alter table ge_monitor_application modify column MODIFIER_ID VARCHAR(32) comment 'ĞŞ¸ÄÈËID';
-   alter table ge_monitor_application modify column STATUS VARCHAR(1) comment 'ÓĞĞ§×´Ì¬:1ÓĞĞ§,0É¾³ı';
-   alter table ge_monitor_application modify column `INTERVAL` decimal(10,0) comment 'ÂÖÑ¯¼ä¸ô';
-   alter table ge_monitor_application comment '´æ´¢ĞèÒª¼à¿ØµÄÓ¦ÓÃÏµÍ³ĞÅÏ¢';
+   alter table ge_monitor_application modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_application modify column APPLICATION_NAME VARCHAR(100) comment 'åº”ç”¨ç³»ç»Ÿè‹±æ–‡åç§°';
+   alter table ge_monitor_application modify column CN_NAME VARCHAR(300) comment 'åº”ç”¨ç³»ç»Ÿä¸­æ–‡åç§°';
+   alter table ge_monitor_application modify column CREATE_TIME timestamp comment 'åˆ›å»ºæ—¶é—´';
+   alter table ge_monitor_application modify column CREATOR_ID VARCHAR(32) comment 'åˆ›å»ºäººID';
+   alter table ge_monitor_application modify column MODIFY_TIME timestamp comment 'ä¿®æ”¹æ—¶é—´';
+   alter table ge_monitor_application modify column MODIFIER_ID VARCHAR(32) comment 'ä¿®æ”¹äººID';
+   alter table ge_monitor_application modify column STATUS VARCHAR(1) comment 'æœ‰æ•ˆçŠ¶æ€:1æœ‰æ•ˆ,0åˆ é™¤';
+   alter table ge_monitor_application modify column `INTERVAL` decimal(10,0) comment 'è½®è¯¢é—´éš”';
+   alter table ge_monitor_application comment 'å­˜å‚¨éœ€è¦ç›‘æ§çš„åº”ç”¨ç³»ç»Ÿä¿¡æ¯';
 
 
   CREATE TABLE ge_monitor_attribute 
@@ -99,12 +99,12 @@
 	ATTRIBUTE_CN VARCHAR(255)
    ) ;
 
-   alter table ge_monitor_attribute modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_attribute modify column RESOURCE_TYPE VARCHAR(32) comment '×ÊÔ´ÀàĞÍ';
-   alter table ge_monitor_attribute modify column ATTRIBUTE VARCHAR(255) comment 'ÊôĞÔ';
-   alter table ge_monitor_attribute modify column UNITS VARCHAR(10) comment 'µ¥Î»';
-   alter table ge_monitor_attribute modify column ATTRIBUTE_CN VARCHAR(255) comment 'ÊôĞÔÖĞÎÄÃû³Æ';
-   alter table ge_monitor_attribute comment 'ÊôĞÔĞÅÏ¢±í';
+   alter table ge_monitor_attribute modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_attribute modify column RESOURCE_TYPE VARCHAR(32) comment 'èµ„æºç±»å‹';
+   alter table ge_monitor_attribute modify column ATTRIBUTE VARCHAR(255) comment 'å±æ€§';
+   alter table ge_monitor_attribute modify column UNITS VARCHAR(10) comment 'å•ä½';
+   alter table ge_monitor_attribute modify column ATTRIBUTE_CN VARCHAR(255) comment 'å±æ€§ä¸­æ–‡åç§°';
+   alter table ge_monitor_attribute comment 'å±æ€§ä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_attribute_action 
@@ -117,13 +117,13 @@
 	SEVERITY VARCHAR(32) not null
    ) ;
 
-   alter table ge_monitor_attribute_action modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_attribute_action modify column RESOURCE_ID VARCHAR(32) comment '×ÊÔ´ID';
-   alter table ge_monitor_attribute_action modify column ATTRIBUTE_ID VARCHAR(32) comment 'ÊôĞÔID';
-   alter table ge_monitor_attribute_action modify column ACTION_ID VARCHAR(32) comment '¶¯×÷ID';
-   alter table ge_monitor_attribute_action modify column ACTION_TYPE VARCHAR(20) comment '¶¯×÷ÀàĞÍ';
-   alter table ge_monitor_attribute_action modify column SEVERITY VARCHAR(32) comment 'ÑÏÖØ³Ì¶È';
-   alter table ge_monitor_attribute_action comment 'ÊôĞÔ¶¯×÷ĞÅÏ¢±í';
+   alter table ge_monitor_attribute_action modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_attribute_action modify column RESOURCE_ID VARCHAR(32) comment 'èµ„æºID';
+   alter table ge_monitor_attribute_action modify column ATTRIBUTE_ID VARCHAR(32) comment 'å±æ€§ID';
+   alter table ge_monitor_attribute_action modify column ACTION_ID VARCHAR(32) comment 'åŠ¨ä½œID';
+   alter table ge_monitor_attribute_action modify column ACTION_TYPE VARCHAR(20) comment 'åŠ¨ä½œç±»å‹';
+   alter table ge_monitor_attribute_action modify column SEVERITY VARCHAR(32) comment 'ä¸¥é‡ç¨‹åº¦';
+   alter table ge_monitor_attribute_action comment 'å±æ€§åŠ¨ä½œä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_attribute_threshold 
@@ -134,11 +134,11 @@
 	THRESHOLD_ID VARCHAR(32) not null
    ) ;
 
-   alter table ge_monitor_attribute_threshold modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_attribute_threshold modify column RESOURCE_ID VARCHAR(32) comment '×ÊÔ´ID';
-   alter table ge_monitor_attribute_threshold modify column ATTRIBUTE_ID VARCHAR(32) comment 'ÊôĞÔID';
-   alter table ge_monitor_attribute_threshold modify column THRESHOLD_ID VARCHAR(32) comment 'ãĞÖµID';
-   alter table ge_monitor_attribute_threshold comment 'ÊôĞÔãĞÖµĞÅÏ¢±í';
+   alter table ge_monitor_attribute_threshold modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_attribute_threshold modify column RESOURCE_ID VARCHAR(32) comment 'èµ„æºID';
+   alter table ge_monitor_attribute_threshold modify column ATTRIBUTE_ID VARCHAR(32) comment 'å±æ€§ID';
+   alter table ge_monitor_attribute_threshold modify column THRESHOLD_ID VARCHAR(32) comment 'é˜ˆå€¼ID';
+   alter table ge_monitor_attribute_threshold comment 'å±æ€§é˜ˆå€¼ä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_biz_scenario 
@@ -154,16 +154,16 @@
 	STATUS VARCHAR(1) DEFAULT '1'
    ) ;
 
-   alter table ge_monitor_biz_scenario modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_biz_scenario modify column NAME VARCHAR(300) comment 'ÒµÎñ³¡¾°Ãû³Æ';
-   alter table ge_monitor_biz_scenario modify column BIZ_SCENARIO_GRADE VARCHAR(15) comment 'ÒµÎñ³¡¾°¼¶±ğ';
-   alter table ge_monitor_biz_scenario modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³ID';
-   alter table ge_monitor_biz_scenario modify column CREATE_TIME timestamp comment '´´½¨Ê±¼ä';
-   alter table ge_monitor_biz_scenario modify column CREATOR_ID VARCHAR(32) comment '´´½¨ÈËID';
-   alter table ge_monitor_biz_scenario modify column MODIFY_TIME timestamp comment 'ĞŞ¸ÄÊ±¼ä';
-   alter table ge_monitor_biz_scenario modify column MODIFIER_ID VARCHAR(32) comment 'ĞŞ¸ÄÈËID';
-   alter table ge_monitor_biz_scenario modify column STATUS VARCHAR(1) comment 'ÓĞĞ§×´Ì¬:1ÓĞĞ§,0É¾³ı';
-   alter table ge_monitor_biz_scenario comment '´æ´¢Ö¸¶¨Ó¦ÓÃÏµÍ³µÄÒµÎñ³¡¾°ĞÅÏ¢';
+   alter table ge_monitor_biz_scenario modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_biz_scenario modify column NAME VARCHAR(300) comment 'ä¸šåŠ¡åœºæ™¯åç§°';
+   alter table ge_monitor_biz_scenario modify column BIZ_SCENARIO_GRADE VARCHAR(15) comment 'ä¸šåŠ¡åœºæ™¯çº§åˆ«';
+   alter table ge_monitor_biz_scenario modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»ŸID';
+   alter table ge_monitor_biz_scenario modify column CREATE_TIME timestamp comment 'åˆ›å»ºæ—¶é—´';
+   alter table ge_monitor_biz_scenario modify column CREATOR_ID VARCHAR(32) comment 'åˆ›å»ºäººID';
+   alter table ge_monitor_biz_scenario modify column MODIFY_TIME timestamp comment 'ä¿®æ”¹æ—¶é—´';
+   alter table ge_monitor_biz_scenario modify column MODIFIER_ID VARCHAR(32) comment 'ä¿®æ”¹äººID';
+   alter table ge_monitor_biz_scenario modify column STATUS VARCHAR(1) comment 'æœ‰æ•ˆçŠ¶æ€:1æœ‰æ•ˆ,0åˆ é™¤';
+   alter table ge_monitor_biz_scenario comment 'å­˜å‚¨æŒ‡å®šåº”ç”¨ç³»ç»Ÿçš„ä¸šåŠ¡åœºæ™¯ä¿¡æ¯';
 
 
   CREATE TABLE ge_monitor_biz_scenario_url 
@@ -172,9 +172,9 @@
 	URL_ID VARCHAR(32) not null
    ) ;
 
-   alter table ge_monitor_biz_scenario_url modify column BIZ_SCENARIO_ID VARCHAR(32) comment 'ÒµÎñ³¡¾°ID';
+   alter table ge_monitor_biz_scenario_url modify column BIZ_SCENARIO_ID VARCHAR(32) comment 'ä¸šåŠ¡åœºæ™¯ID';
    alter table ge_monitor_biz_scenario_url modify column URL_ID VARCHAR(32) comment 'URLID';
-   alter table ge_monitor_biz_scenario_url comment 'Ó¦ÓÃÏµÍ³ÒµÎñ³¡¾°URLĞÅÏ¢±í';
+   alter table ge_monitor_biz_scenario_url comment 'åº”ç”¨ç³»ç»Ÿä¸šåŠ¡åœºæ™¯URLä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_email_action 
@@ -191,17 +191,17 @@
 	NAME VARCHAR(100) not null
    ) ;
 
-   alter table ge_monitor_email_action modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_email_action modify column FROM_ADDRESS VARCHAR(250) comment '·¢¼şµØÖ·(fromaddress)';
-   alter table ge_monitor_email_action modify column TO_ADDRESS VARCHAR(250) comment 'ÊÕ¼şµØÖ·(toaddress)';
-   alter table ge_monitor_email_action modify column SUBJECT VARCHAR(100) comment 'Ö÷Ìâ(subject)';
-   alter table ge_monitor_email_action modify column CONTENT VARCHAR(3000) comment 'ÄÚÈİ(message)';
-   alter table ge_monitor_email_action modify column SMTP_SERVER VARCHAR(100) comment 'ÓÊ¼ş·şÎñÆ÷(smtpserver)';
-   alter table ge_monitor_email_action modify column SMTP_PORT VARCHAR(5) comment 'ÓÊ¼ş·şÎñÆ÷¶Ë¿Ú(smtpport)';
-   alter table ge_monitor_email_action modify column MAIL_FORMAT VARCHAR(1) comment 'ÓÊ¼ş¸ñÊ½(mailformat)';
-   alter table ge_monitor_email_action modify column APPEND_MESSAGE VARCHAR(100) comment '¸½¼ÓĞÅÏ¢(appendmessage)';
-   alter table ge_monitor_email_action modify column NAME VARCHAR(100) comment '¶¯×÷Ãû³Æ(name)';
-   alter table ge_monitor_email_action comment 'Ó¦ÓÃÏµÍ³ÓÊ¼ş¶¯×÷ĞÅÏ¢±í';
+   alter table ge_monitor_email_action modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_email_action modify column FROM_ADDRESS VARCHAR(250) comment 'å‘ä»¶åœ°å€(fromaddress)';
+   alter table ge_monitor_email_action modify column TO_ADDRESS VARCHAR(250) comment 'æ”¶ä»¶åœ°å€(toaddress)';
+   alter table ge_monitor_email_action modify column SUBJECT VARCHAR(100) comment 'ä¸»é¢˜(subject)';
+   alter table ge_monitor_email_action modify column CONTENT VARCHAR(3000) comment 'å†…å®¹(message)';
+   alter table ge_monitor_email_action modify column SMTP_SERVER VARCHAR(100) comment 'é‚®ä»¶æœåŠ¡å™¨(smtpserver)';
+   alter table ge_monitor_email_action modify column SMTP_PORT VARCHAR(5) comment 'é‚®ä»¶æœåŠ¡å™¨ç«¯å£(smtpport)';
+   alter table ge_monitor_email_action modify column MAIL_FORMAT VARCHAR(1) comment 'é‚®ä»¶æ ¼å¼(mailformat)';
+   alter table ge_monitor_email_action modify column APPEND_MESSAGE VARCHAR(100) comment 'é™„åŠ ä¿¡æ¯(appendmessage)';
+   alter table ge_monitor_email_action modify column NAME VARCHAR(100) comment 'åŠ¨ä½œåç§°(name)';
+   alter table ge_monitor_email_action comment 'åº”ç”¨ç³»ç»Ÿé‚®ä»¶åŠ¨ä½œä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_eum_url 
@@ -213,10 +213,10 @@
 	URL_ID VARCHAR(32)
    ) ;
 
-   alter table ge_monitor_eum_url modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_eum_url modify column URL VARCHAR(300) comment 'URLµØÖ·';
-   alter table ge_monitor_eum_url modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³ID';
-   alter table ge_monitor_eum_url comment 'ÒµÎñ·ÂÕæURLĞÅÏ¢±í';
+   alter table ge_monitor_eum_url modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_eum_url modify column URL VARCHAR(300) comment 'URLåœ°å€';
+   alter table ge_monitor_eum_url modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»ŸID';
+   alter table ge_monitor_eum_url comment 'ä¸šåŠ¡ä»¿çœŸURLä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_eum_url_ava 
@@ -228,12 +228,12 @@
 	`INTERVAL` decimal(10,0) not null 
    ) ;
 
-   alter table ge_monitor_eum_url_ava modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_eum_url_ava modify column EUM_URL_ID VARCHAR(32) comment 'ÒµÎñ·ÂÕæID';
-   alter table ge_monitor_eum_url_ava modify column STATE VARCHAR(1) comment '×´Ì¬ 1---¿ÉÓÃ 0---²»¿ÉÓÃ';
-   alter table ge_monitor_eum_url_ava modify column RECORD_TIME timestamp comment '¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_eum_url_ava modify column `INTERVAL` decimal(10,0) comment 'ÂÖÑ¯¼ä¸ô';
-   alter table ge_monitor_eum_url_ava comment 'Ó¦ÓÃÏµÍ³¿ÉÓÃĞÔÁÙÊ±±í';
+   alter table ge_monitor_eum_url_ava modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_eum_url_ava modify column EUM_URL_ID VARCHAR(32) comment 'ä¸šåŠ¡ä»¿çœŸID';
+   alter table ge_monitor_eum_url_ava modify column STATE VARCHAR(1) comment 'çŠ¶æ€ 1---å¯ç”¨ 0---ä¸å¯ç”¨';
+   alter table ge_monitor_eum_url_ava modify column RECORD_TIME timestamp comment 'è®°å½•æ—¶é—´';
+   alter table ge_monitor_eum_url_ava modify column `INTERVAL` decimal(10,0) comment 'è½®è¯¢é—´éš”';
+   alter table ge_monitor_eum_url_ava comment 'åº”ç”¨ç³»ç»Ÿå¯ç”¨æ€§ä¸´æ—¶è¡¨';
 
 
   CREATE TABLE ge_monitor_eum_url_ava_sta 
@@ -247,14 +247,14 @@
 	RECORD_TIME timestamp
    ) ;
 
-   alter table ge_monitor_eum_url_ava_sta modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_eum_url_ava_sta modify column EUM_URL_ID VARCHAR(32) comment 'ÒµÎñ·ÂÕæURLID';
-   alter table ge_monitor_eum_url_ava_sta modify column NORMAL_RUNTIME decimal(10,0) comment 'Õı³£ÔËĞĞÊ±¼ä';
-   alter table ge_monitor_eum_url_ava_sta modify column TOTAL_FAILURE_TIME decimal(10,0) comment '×ÜÊ§°ÜÊ±¼ä';
-   alter table ge_monitor_eum_url_ava_sta modify column FAILURE_COUNT decimal(10,0) comment 'Í£Ö¹´ÎÊı';
-   alter table ge_monitor_eum_url_ava_sta modify column AVG_FAILURE_TIME decimal(10,0) comment 'Æ½¾ù¹ÊÕÏ¼ä¸ôÊ±¼ä';
-   alter table ge_monitor_eum_url_ava_sta modify column RECORD_TIME timestamp comment '¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_eum_url_ava_sta comment 'ÒµÎñ·ÂÕæURL¿ÉÓÃĞÔÍ³¼Æ±í';
+   alter table ge_monitor_eum_url_ava_sta modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_eum_url_ava_sta modify column EUM_URL_ID VARCHAR(32) comment 'ä¸šåŠ¡ä»¿çœŸURLID';
+   alter table ge_monitor_eum_url_ava_sta modify column NORMAL_RUNTIME decimal(10,0) comment 'æ­£å¸¸è¿è¡Œæ—¶é—´';
+   alter table ge_monitor_eum_url_ava_sta modify column TOTAL_FAILURE_TIME decimal(10,0) comment 'æ€»å¤±è´¥æ—¶é—´';
+   alter table ge_monitor_eum_url_ava_sta modify column FAILURE_COUNT decimal(10,0) comment 'åœæ­¢æ¬¡æ•°';
+   alter table ge_monitor_eum_url_ava_sta modify column AVG_FAILURE_TIME decimal(10,0) comment 'å¹³å‡æ•…éšœé—´éš”æ—¶é—´';
+   alter table ge_monitor_eum_url_ava_sta modify column RECORD_TIME timestamp comment 'è®°å½•æ—¶é—´';
+   alter table ge_monitor_eum_url_ava_sta comment 'ä¸šåŠ¡ä»¿çœŸURLå¯ç”¨æ€§ç»Ÿè®¡è¡¨';
 
 
   CREATE TABLE ge_monitor_exception_info 
@@ -270,16 +270,16 @@
 	REQUEST_PARAMS longtext
    ) ;
 
-   alter table ge_monitor_exception_info modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_exception_info modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³';
-   alter table ge_monitor_exception_info modify column EXCEPTION_DESCRIPTION VARCHAR(500) comment 'Òì³£ÃèÊö';
-   alter table ge_monitor_exception_info modify column EXCEPTION_STACK_TRACE longtext comment 'Òì³£¶ÑÕ»';
-   alter table ge_monitor_exception_info modify column RECORD_TIME timestamp comment 'Òì³£Ê±¼ä';
-   alter table ge_monitor_exception_info modify column URL_TRACE_LOG_ID VARCHAR(32) comment 'URL×·×ÙÈÕÖ¾ID';
-   alter table ge_monitor_exception_info modify column ALARM_ID VARCHAR(32) comment '¸æ¾¯ÏûÏ¢ID';
-   alter table ge_monitor_exception_info modify column URL VARCHAR(300) comment 'URLµØÖ·';
-   alter table ge_monitor_exception_info modify column REQUEST_PARAMS longtext comment 'URLÇëÇó²ÎÊı';
-   alter table ge_monitor_exception_info comment '¼ÇÂ¼ËùÓĞµÄÒì³£ĞÅÏ¢';
+   alter table ge_monitor_exception_info modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_exception_info modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»Ÿ';
+   alter table ge_monitor_exception_info modify column EXCEPTION_DESCRIPTION VARCHAR(500) comment 'å¼‚å¸¸æè¿°';
+   alter table ge_monitor_exception_info modify column EXCEPTION_STACK_TRACE longtext comment 'å¼‚å¸¸å †æ ˆ';
+   alter table ge_monitor_exception_info modify column RECORD_TIME timestamp comment 'å¼‚å¸¸æ—¶é—´';
+   alter table ge_monitor_exception_info modify column URL_TRACE_LOG_ID VARCHAR(32) comment 'URLè¿½è¸ªæ—¥å¿—ID';
+   alter table ge_monitor_exception_info modify column ALARM_ID VARCHAR(32) comment 'å‘Šè­¦æ¶ˆæ¯ID';
+   alter table ge_monitor_exception_info modify column URL VARCHAR(300) comment 'URLåœ°å€';
+   alter table ge_monitor_exception_info modify column REQUEST_PARAMS longtext comment 'URLè¯·æ±‚å‚æ•°';
+   alter table ge_monitor_exception_info comment 'è®°å½•æ‰€æœ‰çš„å¼‚å¸¸ä¿¡æ¯';
 
 
   CREATE TABLE ge_monitor_group 
@@ -310,17 +310,17 @@
 	STATUS VARCHAR(1) DEFAULT '1'
    ) ;
 
-   alter table ge_monitor_method modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_method modify column DESCRIPTION VARCHAR(300) comment '·½·¨ÃèÊö';
-   alter table ge_monitor_method modify column CLASS_NAME VARCHAR(500) comment '·½·¨ËùÊôÀàÃû';
-   alter table ge_monitor_method modify column METHOD_NAME VARCHAR(100) comment '·½·¨Ãû³Æ';
-   alter table ge_monitor_method modify column THRESHOLD decimal(6,0) comment '·½·¨ãĞÖµ,µ¥Î»ms';
-   alter table ge_monitor_method modify column CREATE_TIME timestamp comment '´´½¨Ê±¼ä';
-   alter table ge_monitor_method modify column CREATOR_ID VARCHAR(32) comment '´´½¨ÈËID';
-   alter table ge_monitor_method modify column MODIFY_TIME timestamp comment 'ĞŞ¸ÄÊ±¼ä';
-   alter table ge_monitor_method modify column MODIFIER_ID VARCHAR(32) comment 'ĞŞ¸ÄÈËID';
-   alter table ge_monitor_method modify column STATUS VARCHAR(1) comment 'ÓĞĞ§×´Ì¬:1ÓĞĞ§,0É¾³ı';
-   alter table ge_monitor_method comment 'Ó¦ÓÃÏµÍ³·½·¨ĞÅÏ¢±í';
+   alter table ge_monitor_method modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_method modify column DESCRIPTION VARCHAR(300) comment 'æ–¹æ³•æè¿°';
+   alter table ge_monitor_method modify column CLASS_NAME VARCHAR(500) comment 'æ–¹æ³•æ‰€å±ç±»å';
+   alter table ge_monitor_method modify column METHOD_NAME VARCHAR(100) comment 'æ–¹æ³•åç§°';
+   alter table ge_monitor_method modify column THRESHOLD decimal(6,0) comment 'æ–¹æ³•é˜ˆå€¼,å•ä½ms';
+   alter table ge_monitor_method modify column CREATE_TIME timestamp comment 'åˆ›å»ºæ—¶é—´';
+   alter table ge_monitor_method modify column CREATOR_ID VARCHAR(32) comment 'åˆ›å»ºäººID';
+   alter table ge_monitor_method modify column MODIFY_TIME timestamp comment 'ä¿®æ”¹æ—¶é—´';
+   alter table ge_monitor_method modify column MODIFIER_ID VARCHAR(32) comment 'ä¿®æ”¹äººID';
+   alter table ge_monitor_method modify column STATUS VARCHAR(1) comment 'æœ‰æ•ˆçŠ¶æ€:1æœ‰æ•ˆ,0åˆ é™¤';
+   alter table ge_monitor_method comment 'åº”ç”¨ç³»ç»Ÿæ–¹æ³•ä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_method_responsetime 
@@ -337,17 +337,17 @@
     METHOD_ID VARCHAR(32)
    ) ;
 
-   alter table ge_monitor_method_responsetime modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_method_responsetime modify column METHOD_NAME VARCHAR(300) comment '·½·¨Ãû';
-   alter table ge_monitor_method_responsetime modify column URL_ID VARCHAR(32) comment 'URLĞÅÏ¢ID';
-   alter table ge_monitor_method_responsetime modify column MIN_RESPONSE_TIME decimal(10,0) comment '×îĞ¡ÏìÓ¦Ê±¼ä';
-   alter table ge_monitor_method_responsetime modify column MAX_RESPONSE_TIME decimal(10,0) comment '×î´óÏìÓ¦Ê±¼ä';
-   alter table ge_monitor_method_responsetime modify column TOTAL_RESPONSE_TIME decimal(10,0) comment '×ÜÏìÓ¦Ê±¼ä';
-   alter table ge_monitor_method_responsetime modify column TOTAL_COUNT decimal(10,0) comment '×Ü´ÎÊı';
-   alter table ge_monitor_method_responsetime modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³';
-   alter table ge_monitor_method_responsetime modify column RECORD_TIME timestamp comment '¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_method_responsetime modify column METHOD_ID VARCHAR(32) comment '·½·¨ĞÅÏ¢ID';
-   alter table ge_monitor_method_responsetime comment '·½·¨ÏìÓ¦Ê±¼ä';
+   alter table ge_monitor_method_responsetime modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_method_responsetime modify column METHOD_NAME VARCHAR(300) comment 'æ–¹æ³•å';
+   alter table ge_monitor_method_responsetime modify column URL_ID VARCHAR(32) comment 'URLä¿¡æ¯ID';
+   alter table ge_monitor_method_responsetime modify column MIN_RESPONSE_TIME decimal(10,0) comment 'æœ€å°å“åº”æ—¶é—´';
+   alter table ge_monitor_method_responsetime modify column MAX_RESPONSE_TIME decimal(10,0) comment 'æœ€å¤§å“åº”æ—¶é—´';
+   alter table ge_monitor_method_responsetime modify column TOTAL_RESPONSE_TIME decimal(10,0) comment 'æ€»å“åº”æ—¶é—´';
+   alter table ge_monitor_method_responsetime modify column TOTAL_COUNT decimal(10,0) comment 'æ€»æ¬¡æ•°';
+   alter table ge_monitor_method_responsetime modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»Ÿ';
+   alter table ge_monitor_method_responsetime modify column RECORD_TIME timestamp comment 'è®°å½•æ—¶é—´';
+   alter table ge_monitor_method_responsetime modify column METHOD_ID VARCHAR(32) comment 'æ–¹æ³•ä¿¡æ¯ID';
+   alter table ge_monitor_method_responsetime comment 'æ–¹æ³•å“åº”æ—¶é—´';
 
 
   CREATE TABLE ge_monitor_method_tl_temp 
@@ -381,18 +381,18 @@
 	METHOD_ID VARCHAR(32)
    ) ;
 
-   alter table ge_monitor_method_trace_log modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_method_trace_log modify column URL_TRACE_LOG_ID VARCHAR(32) comment 'URL×·×ÙÈÕÖ¾ID';
-   alter table ge_monitor_method_trace_log modify column METHOD_NAME VARCHAR(100) comment '·½·¨Ãû';
-   alter table ge_monitor_method_trace_log modify column CLASS_NAME VARCHAR(200) comment '·½·¨ËùÊôÀàÃû';
-   alter table ge_monitor_method_trace_log modify column IN_PARAM longtext comment '·½·¨ÊäÈë²ÎÊı';
-   alter table ge_monitor_method_trace_log modify column OUT_PARAM longtext comment '·½·¨ÊäÈë²ÎÊı';
-   alter table ge_monitor_method_trace_log modify column BEGIN_TIME timestamp comment '·½·¨¿ªÊ¼Ê±¼ä';
-   alter table ge_monitor_method_trace_log modify column END_TIME timestamp comment '·½·¨½áÊøÊ±¼ä';
-   alter table ge_monitor_method_trace_log modify column CONSUME_TIME decimal(10,0) comment 'URLÖ´ĞĞÊ±¼ä';
-   alter table ge_monitor_method_trace_log modify column RECORD_TIME timestamp comment 'ÈÕÖ¾¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_method_trace_log modify column METHOD_ID VARCHAR(32) comment '·½·¨ĞÅÏ¢ID';
-   alter table ge_monitor_method_trace_log comment '·½·¨×·×ÙÈÕÖ¾ĞÅÏ¢±í';
+   alter table ge_monitor_method_trace_log modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_method_trace_log modify column URL_TRACE_LOG_ID VARCHAR(32) comment 'URLè¿½è¸ªæ—¥å¿—ID';
+   alter table ge_monitor_method_trace_log modify column METHOD_NAME VARCHAR(100) comment 'æ–¹æ³•å';
+   alter table ge_monitor_method_trace_log modify column CLASS_NAME VARCHAR(200) comment 'æ–¹æ³•æ‰€å±ç±»å';
+   alter table ge_monitor_method_trace_log modify column IN_PARAM longtext comment 'æ–¹æ³•è¾“å…¥å‚æ•°';
+   alter table ge_monitor_method_trace_log modify column OUT_PARAM longtext comment 'æ–¹æ³•è¾“å…¥å‚æ•°';
+   alter table ge_monitor_method_trace_log modify column BEGIN_TIME timestamp comment 'æ–¹æ³•å¼€å§‹æ—¶é—´';
+   alter table ge_monitor_method_trace_log modify column END_TIME timestamp comment 'æ–¹æ³•ç»“æŸæ—¶é—´';
+   alter table ge_monitor_method_trace_log modify column CONSUME_TIME decimal(10,0) comment 'URLæ‰§è¡Œæ—¶é—´';
+   alter table ge_monitor_method_trace_log modify column RECORD_TIME timestamp comment 'æ—¥å¿—è®°å½•æ—¶é—´';
+   alter table ge_monitor_method_trace_log modify column METHOD_ID VARCHAR(32) comment 'æ–¹æ³•ä¿¡æ¯ID';
+   alter table ge_monitor_method_trace_log comment 'æ–¹æ³•è¿½è¸ªæ—¥å¿—ä¿¡æ¯è¡¨';
 
 
 
@@ -404,11 +404,11 @@
 	RECORD_TIME timestamp
    ) ;
 
-   alter table ge_monitor_request_per_minute modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_request_per_minute modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³ID';
-   alter table ge_monitor_request_per_minute modify column REQUEST_NUMBER decimal(10,0) comment 'ÇëÇóÊı';
-   alter table ge_monitor_request_per_minute modify column RECORD_TIME timestamp comment '¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_request_per_minute comment 'Ó¦ÓÃÏµÍ³Ã¿·ÖÖÓÇëÇóÊı';
+   alter table ge_monitor_request_per_minute modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_request_per_minute modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»ŸID';
+   alter table ge_monitor_request_per_minute modify column REQUEST_NUMBER decimal(10,0) comment 'è¯·æ±‚æ•°';
+   alter table ge_monitor_request_per_minute modify column RECORD_TIME timestamp comment 'è®°å½•æ—¶é—´';
+   alter table ge_monitor_request_per_minute comment 'åº”ç”¨ç³»ç»Ÿæ¯åˆ†é’Ÿè¯·æ±‚æ•°';
 
 
   CREATE TABLE ge_monitor_resources 
@@ -418,10 +418,10 @@
 	RESOURCE_TYPE VARCHAR(100) not null
    ) ;
 
-   alter table ge_monitor_resources modify column RESOURCE_ID VARCHAR(32) comment '×ÊÔ´ID';
-   alter table ge_monitor_resources modify column RESOURCE_NAME VARCHAR(300) comment '×ÊÔ´Ãû³Æ';
-   alter table ge_monitor_resources modify column RESOURCE_TYPE VARCHAR(100) comment '×ÊÔ´ÀàĞÍ';
-   alter table ge_monitor_resources comment '×ÊÔ´±í';
+   alter table ge_monitor_resources modify column RESOURCE_ID VARCHAR(32) comment 'èµ„æºID';
+   alter table ge_monitor_resources modify column RESOURCE_NAME VARCHAR(300) comment 'èµ„æºåç§°';
+   alter table ge_monitor_resources modify column RESOURCE_TYPE VARCHAR(100) comment 'èµ„æºç±»å‹';
+   alter table ge_monitor_resources comment 'èµ„æºè¡¨';
 
 
   CREATE TABLE ge_monitor_sms 
@@ -435,13 +435,13 @@
 	REMARK VARCHAR(200)
    ) ;
 
-   alter table ge_monitor_sms modify column ID VARCHAR(32) comment 'ĞòÁĞ';
-   alter table ge_monitor_sms modify column APPID VARCHAR(50) comment 'Ó¦ÓÃID';
-   alter table ge_monitor_sms modify column OWNER VARCHAR(100) comment 'ÓÃ»§Ãû';
-   alter table ge_monitor_sms modify column PHONENO VARCHAR(25) comment '¶ÌĞÅºÅÂë';
-   alter table ge_monitor_sms modify column CREATE_TIME timestamp comment '´´½¨Ê±¼ä';
-   alter table ge_monitor_sms modify column STATUS VARCHAR(1) comment '¶ÌĞÅ×´Ì¬';
-   alter table ge_monitor_sms modify column REMARK VARCHAR(200) comment '±¸×¢';
+   alter table ge_monitor_sms modify column ID VARCHAR(32) comment 'åºåˆ—';
+   alter table ge_monitor_sms modify column APPID VARCHAR(50) comment 'åº”ç”¨ID';
+   alter table ge_monitor_sms modify column OWNER VARCHAR(100) comment 'ç”¨æˆ·å';
+   alter table ge_monitor_sms modify column PHONENO VARCHAR(25) comment 'çŸ­ä¿¡å·ç ';
+   alter table ge_monitor_sms modify column CREATE_TIME timestamp comment 'åˆ›å»ºæ—¶é—´';
+   alter table ge_monitor_sms modify column STATUS VARCHAR(1) comment 'çŸ­ä¿¡çŠ¶æ€';
+   alter table ge_monitor_sms modify column REMARK VARCHAR(200) comment 'å¤‡æ³¨';
 
 
   CREATE TABLE ge_monitor_threshold 
@@ -460,19 +460,19 @@
 	INFO_THRESHOLD_MESSAGE VARCHAR(250)
    ) ;
 
-   alter table ge_monitor_threshold modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_threshold modify column NAME VARCHAR(100) comment 'Ãû³Æ';
-   alter table ge_monitor_threshold modify column DESCRIPTION VARCHAR(250) comment 'ÃèÊö';
-   alter table ge_monitor_threshold modify column CRITICAL_THRESHOLD_CONDITION VARCHAR(2) comment 'ÁÙ½çãĞÖµÌõ¼ş';
-   alter table ge_monitor_threshold modify column CRITICAL_THRESHOLD_VALUE decimal(10,0) comment 'ÁÙ½çãĞÖµÖµ';
-   alter table ge_monitor_threshold modify column CRITICAL_THRESHOLD_MESSAGE VARCHAR(250) comment 'ÁÙ½çãĞÖµĞÅÏ¢';
-   alter table ge_monitor_threshold modify column WARNING_THRESHOLD_CONDITION VARCHAR(2) comment '¾¯¸æãĞÖµÌõ¼ş';
-   alter table ge_monitor_threshold modify column WARNING_THRESHOLD_VALUE decimal(10,0) comment '¾¯¸æãĞÖµÖµ';
-   alter table ge_monitor_threshold modify column WARNING_THRESHOLD_MESSAGE VARCHAR(250) comment '¾¯¸æãĞÖµĞÅÏ¢';
-   alter table ge_monitor_threshold modify column INFO_THRESHOLD_CONDITION VARCHAR(2) comment 'Õı³£ãĞÖµÌõ¼ş';
-   alter table ge_monitor_threshold modify column INFO_THRESHOLD_VALUE decimal(10,0) comment 'Õı³£ãĞÖµÖµ';
-   alter table ge_monitor_threshold modify column INFO_THRESHOLD_MESSAGE VARCHAR(250) comment 'Õı³£ãĞÖµĞÅÏ¢';
-   alter table ge_monitor_threshold comment 'ãĞÖµĞÅÏ¢±í';
+   alter table ge_monitor_threshold modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_threshold modify column NAME VARCHAR(100) comment 'åç§°';
+   alter table ge_monitor_threshold modify column DESCRIPTION VARCHAR(250) comment 'æè¿°';
+   alter table ge_monitor_threshold modify column CRITICAL_THRESHOLD_CONDITION VARCHAR(2) comment 'ä¸´ç•Œé˜ˆå€¼æ¡ä»¶';
+   alter table ge_monitor_threshold modify column CRITICAL_THRESHOLD_VALUE decimal(10,0) comment 'ä¸´ç•Œé˜ˆå€¼å€¼';
+   alter table ge_monitor_threshold modify column CRITICAL_THRESHOLD_MESSAGE VARCHAR(250) comment 'ä¸´ç•Œé˜ˆå€¼ä¿¡æ¯';
+   alter table ge_monitor_threshold modify column WARNING_THRESHOLD_CONDITION VARCHAR(2) comment 'è­¦å‘Šé˜ˆå€¼æ¡ä»¶';
+   alter table ge_monitor_threshold modify column WARNING_THRESHOLD_VALUE decimal(10,0) comment 'è­¦å‘Šé˜ˆå€¼å€¼';
+   alter table ge_monitor_threshold modify column WARNING_THRESHOLD_MESSAGE VARCHAR(250) comment 'è­¦å‘Šé˜ˆå€¼ä¿¡æ¯';
+   alter table ge_monitor_threshold modify column INFO_THRESHOLD_CONDITION VARCHAR(2) comment 'æ­£å¸¸é˜ˆå€¼æ¡ä»¶';
+   alter table ge_monitor_threshold modify column INFO_THRESHOLD_VALUE decimal(10,0) comment 'æ­£å¸¸é˜ˆå€¼å€¼';
+   alter table ge_monitor_threshold modify column INFO_THRESHOLD_MESSAGE VARCHAR(250) comment 'æ­£å¸¸é˜ˆå€¼ä¿¡æ¯';
+   alter table ge_monitor_threshold comment 'é˜ˆå€¼ä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_url 
@@ -488,16 +488,16 @@
 	STATUS VARCHAR(1) DEFAULT '1'
    ) ;
 
-   alter table ge_monitor_url modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_url modify column DESCRIPTION VARCHAR(300) comment 'URLÃèÊö';
-   alter table ge_monitor_url modify column URL VARCHAR(500) comment 'URLµØÖ·';
-   alter table ge_monitor_url modify column THRESHOLD decimal(6,0) comment 'URLãĞÖµ£¬µ¥Î»ms';
-   alter table ge_monitor_url modify column CREATE_TIME timestamp comment '´´½¨Ê±¼ä';
-   alter table ge_monitor_url modify column CREATOR_ID VARCHAR(32) comment '´´½¨ÈËID';
-   alter table ge_monitor_url modify column MODIFY_TIME timestamp comment 'ĞŞ¸ÄÊ±¼ä';
-   alter table ge_monitor_url modify column MODIFIER_ID VARCHAR(32) comment 'ĞŞ¸ÄÈËID';
-   alter table ge_monitor_url modify column STATUS VARCHAR(1) comment 'ÓĞĞ§×´Ì¬:1ÓĞĞ§,0É¾³ı';
-   alter table ge_monitor_url comment 'Ó¦ÓÃÏµÍ³URLĞÅÏ¢±í';
+   alter table ge_monitor_url modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_url modify column DESCRIPTION VARCHAR(300) comment 'URLæè¿°';
+   alter table ge_monitor_url modify column URL VARCHAR(500) comment 'URLåœ°å€';
+   alter table ge_monitor_url modify column THRESHOLD decimal(6,0) comment 'URLé˜ˆå€¼ï¼Œå•ä½ms';
+   alter table ge_monitor_url modify column CREATE_TIME timestamp comment 'åˆ›å»ºæ—¶é—´';
+   alter table ge_monitor_url modify column CREATOR_ID VARCHAR(32) comment 'åˆ›å»ºäººID';
+   alter table ge_monitor_url modify column MODIFY_TIME timestamp comment 'ä¿®æ”¹æ—¶é—´';
+   alter table ge_monitor_url modify column MODIFIER_ID VARCHAR(32) comment 'ä¿®æ”¹äººID';
+   alter table ge_monitor_url modify column STATUS VARCHAR(1) comment 'æœ‰æ•ˆçŠ¶æ€:1æœ‰æ•ˆ,0åˆ é™¤';
+   alter table ge_monitor_url comment 'åº”ç”¨ç³»ç»ŸURLä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_url_method 
@@ -507,8 +507,8 @@
    ) ;
 
    alter table ge_monitor_url_method modify column URL_ID VARCHAR(32) comment 'URLID';
-   alter table ge_monitor_url_method modify column METHOD_ID VARCHAR(32) comment '·½·¨ID';
-   alter table ge_monitor_url_method comment 'Ó¦ÓÃÏµÍ³URL·½·¨ĞÅÏ¢±í';
+   alter table ge_monitor_url_method modify column METHOD_ID VARCHAR(32) comment 'æ–¹æ³•ID';
+   alter table ge_monitor_url_method comment 'åº”ç”¨ç³»ç»ŸURLæ–¹æ³•ä¿¡æ¯è¡¨';
 
 
   CREATE TABLE ge_monitor_url_response_time 
@@ -524,16 +524,16 @@
 	TOTAL_COUNT decimal(10,0) 
    ) ;
 
-   alter table ge_monitor_url_response_time modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_url_response_time modify column URL VARCHAR(300) comment 'URLµØÖ·';
-   alter table ge_monitor_url_response_time modify column URL_ID VARCHAR(32) comment 'URLĞÅÏ¢ID';
-   alter table ge_monitor_url_response_time modify column MIN_RESPONSE_TIME decimal(10,0) comment '×îĞ¡ÏìÓ¦Ê±¼ä';
-   alter table ge_monitor_url_response_time modify column MAX_RESPONSE_TIME decimal(10,0) comment '×î´óÏìÓ¦Ê±¼ä';
-   alter table ge_monitor_url_response_time modify column TOTAL_RESPONSE_TIME decimal(10,0) comment '×ÜÏìÓ¦Ê±¼ä';
-   alter table ge_monitor_url_response_time modify column RECORD_TIME timestamp comment '¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_url_response_time modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³';
-   alter table ge_monitor_url_response_time modify column TOTAL_COUNT decimal(10,0) comment '×Ü´ÎÊı';
-   alter table ge_monitor_url_response_time comment 'URLÏìÓ¦Ê±¼ä';
+   alter table ge_monitor_url_response_time modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_url_response_time modify column URL VARCHAR(300) comment 'URLåœ°å€';
+   alter table ge_monitor_url_response_time modify column URL_ID VARCHAR(32) comment 'URLä¿¡æ¯ID';
+   alter table ge_monitor_url_response_time modify column MIN_RESPONSE_TIME decimal(10,0) comment 'æœ€å°å“åº”æ—¶é—´';
+   alter table ge_monitor_url_response_time modify column MAX_RESPONSE_TIME decimal(10,0) comment 'æœ€å¤§å“åº”æ—¶é—´';
+   alter table ge_monitor_url_response_time modify column TOTAL_RESPONSE_TIME decimal(10,0) comment 'æ€»å“åº”æ—¶é—´';
+   alter table ge_monitor_url_response_time modify column RECORD_TIME timestamp comment 'è®°å½•æ—¶é—´';
+   alter table ge_monitor_url_response_time modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»Ÿ';
+   alter table ge_monitor_url_response_time modify column TOTAL_COUNT decimal(10,0) comment 'æ€»æ¬¡æ•°';
+   alter table ge_monitor_url_response_time comment 'URLå“åº”æ—¶é—´';
 
 
   CREATE TABLE ge_monitor_url_trace_log 
@@ -556,23 +556,23 @@
 	APPLICATION_ID VARCHAR(32)
    ) ;
 
-   alter table ge_monitor_url_trace_log modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_url_trace_log modify column URL VARCHAR(500) comment 'URLµØÖ·';
-   alter table ge_monitor_url_trace_log modify column URL_ID VARCHAR(32) comment 'URLĞÅÏ¢ID';
-   alter table ge_monitor_url_trace_log modify column BIZ_SCENARIO_ID VARCHAR(32) comment 'ËùÊôÒµÎñ³¡¾°ID';
-   alter table ge_monitor_url_trace_log modify column BEGIN_TIME timestamp comment 'URL¿ªÊ¼Ê±¼ä';
-   alter table ge_monitor_url_trace_log modify column END_TIME timestamp comment 'URL½áÊøÊ±¼ä';
-   alter table ge_monitor_url_trace_log modify column CONSUME_TIME decimal(10,0) comment 'URLÖ´ĞĞÊ±¼ä';
-   alter table ge_monitor_url_trace_log modify column SESSION_ID VARCHAR(32) comment '»á»°ID';
-   alter table ge_monitor_url_trace_log modify column USER_ID VARCHAR(32) comment 'ÓÃ»§ID';
-   alter table ge_monitor_url_trace_log modify column USER_IP VARCHAR(100) comment 'ÓÃ»§IP';
-   alter table ge_monitor_url_trace_log modify column TRACE_ID VARCHAR(32) comment '×·×ÙID';
-   alter table ge_monitor_url_trace_log modify column REQUEST_PARAMS longtext comment 'ÇëÇó²ÎÊıĞÅÏ¢';
-   alter table ge_monitor_url_trace_log modify column ALARM_ID VARCHAR(32) comment '¸æ¾¯ĞÅÏ¢ID';
-   alter table ge_monitor_url_trace_log modify column RECORD_TIME timestamp comment 'ÈÕÖ¾¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_url_trace_log modify column USERNAME VARCHAR(200) comment 'ÓÃ»§Ãû';
-   alter table ge_monitor_url_trace_log modify column APPLICATION_ID VARCHAR(32) comment 'Ó¦ÓÃÏµÍ³ID';
-   alter table ge_monitor_url_trace_log comment '¼ÇÂ¼Ó¦ÓÃÏµÍ³URL×·×ÙÈÕÖ¾ĞÅÏ¢';
+   alter table ge_monitor_url_trace_log modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_url_trace_log modify column URL VARCHAR(500) comment 'URLåœ°å€';
+   alter table ge_monitor_url_trace_log modify column URL_ID VARCHAR(32) comment 'URLä¿¡æ¯ID';
+   alter table ge_monitor_url_trace_log modify column BIZ_SCENARIO_ID VARCHAR(32) comment 'æ‰€å±ä¸šåŠ¡åœºæ™¯ID';
+   alter table ge_monitor_url_trace_log modify column BEGIN_TIME timestamp comment 'URLå¼€å§‹æ—¶é—´';
+   alter table ge_monitor_url_trace_log modify column END_TIME timestamp comment 'URLç»“æŸæ—¶é—´';
+   alter table ge_monitor_url_trace_log modify column CONSUME_TIME decimal(10,0) comment 'URLæ‰§è¡Œæ—¶é—´';
+   alter table ge_monitor_url_trace_log modify column SESSION_ID VARCHAR(32) comment 'ä¼šè¯ID';
+   alter table ge_monitor_url_trace_log modify column USER_ID VARCHAR(32) comment 'ç”¨æˆ·ID';
+   alter table ge_monitor_url_trace_log modify column USER_IP VARCHAR(100) comment 'ç”¨æˆ·IP';
+   alter table ge_monitor_url_trace_log modify column TRACE_ID VARCHAR(32) comment 'è¿½è¸ªID';
+   alter table ge_monitor_url_trace_log modify column REQUEST_PARAMS longtext comment 'è¯·æ±‚å‚æ•°ä¿¡æ¯';
+   alter table ge_monitor_url_trace_log modify column ALARM_ID VARCHAR(32) comment 'å‘Šè­¦ä¿¡æ¯ID';
+   alter table ge_monitor_url_trace_log modify column RECORD_TIME timestamp comment 'æ—¥å¿—è®°å½•æ—¶é—´';
+   alter table ge_monitor_url_trace_log modify column USERNAME VARCHAR(200) comment 'ç”¨æˆ·å';
+   alter table ge_monitor_url_trace_log modify column APPLICATION_ID VARCHAR(32) comment 'åº”ç”¨ç³»ç»ŸID';
+   alter table ge_monitor_url_trace_log comment 'è®°å½•åº”ç”¨ç³»ç»ŸURLè¿½è¸ªæ—¥å¿—ä¿¡æ¯';
 
 
   CREATE TABLE ge_monitor_url_trace_log_temp 
@@ -605,12 +605,12 @@
 	APPLICATION_ID VARCHAR(32)
    ) ;
 
-   alter table ge_monitor_url_visits_sta modify column ID VARCHAR(32) comment 'Ö÷¼üID';
-   alter table ge_monitor_url_visits_sta modify column URL_ID VARCHAR(32) comment 'URLĞÅÏ¢ID';
-   alter table ge_monitor_url_visits_sta modify column VISIT_NUMBER decimal(10,0)  comment '·ÃÎÊÁ¿';
-   alter table ge_monitor_url_visits_sta modify column RECORD_TIME timestamp comment '¼ÇÂ¼Ê±¼ä';
-   alter table ge_monitor_url_visits_sta modify column APPLICATION_ID VARCHAR(32) comment 'ËùÊôÓ¦ÓÃÏµÍ³ID';
-   alter table ge_monitor_url_visits_sta comment 'Ó¦ÓÃÏµÍ³URL·ÃÎÊÁ¿Í³¼Æ';
+   alter table ge_monitor_url_visits_sta modify column ID VARCHAR(32) comment 'ä¸»é”®ID';
+   alter table ge_monitor_url_visits_sta modify column URL_ID VARCHAR(32) comment 'URLä¿¡æ¯ID';
+   alter table ge_monitor_url_visits_sta modify column VISIT_NUMBER decimal(10,0)  comment 'è®¿é—®é‡';
+   alter table ge_monitor_url_visits_sta modify column RECORD_TIME timestamp comment 'è®°å½•æ—¶é—´';
+   alter table ge_monitor_url_visits_sta modify column APPLICATION_ID VARCHAR(32) comment 'æ‰€å±åº”ç”¨ç³»ç»ŸID';
+   alter table ge_monitor_url_visits_sta comment 'åº”ç”¨ç³»ç»ŸURLè®¿é—®é‡ç»Ÿè®¡';
 
 
   ALTER TABLE ge_monitor_account add primary key(ID);
