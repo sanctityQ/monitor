@@ -16,10 +16,6 @@ import com.sinosoft.one.monitor.attribute.repository.AttributeActionRepository;
 import com.sinosoft.one.monitor.attribute.repository.AttributeRepository;
 import com.sinosoft.one.monitor.attribute.repository.AttributeThresholdRepository;
 import com.sinosoft.one.monitor.common.ResourceType;
-import com.sinosoft.one.monitor.db.oracle.model.Info;
-import com.sinosoft.one.monitor.db.oracle.repository.InfoRepository;
-import com.sinosoft.one.monitor.os.linux.model.Os;
-import com.sinosoft.one.monitor.os.linux.repository.OsRepository;
 import com.sinosoft.one.monitor.resources.model.Resource;
 import com.sinosoft.one.monitor.resources.repository.ResourcesRepository;
 import com.sinosoft.one.monitor.threshold.model.SeverityLevel;
@@ -56,10 +52,6 @@ public class ConfigEmergencyController {
     AttributeService attributeService;
     @Autowired
     ApplicationService applicationService;
-    @Autowired
-    InfoRepository infoRepository;
-    @Autowired
-    OsRepository osRepository;
     @Autowired
     AttributeCache attributeCache;
     @Autowired
@@ -99,35 +91,7 @@ public class ConfigEmergencyController {
                 return Replys.with(jsonMonitorNames).as(Json.class);
             }
             return null;
-        }else if(ResourceType.DB.name().equals(resourceType)){
-            List<Info> dbInfos= (List<Info>) infoRepository.findAll();
-            if (dbInfos!=null){
-                for (Info dbInfo : dbInfos) {
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("monitorId",dbInfo.getId());
-                    //获取GE_MONITOR_ORACLE_INFO表的NAME字段值
-                    jsonObject.put("monitorName", dbInfo.getName());
-                    jsonArray.add(jsonObject);
-                }
-                jsonMonitorNames = jsonArray.toJSONString();
-                return Replys.with(jsonMonitorNames).as(Json.class);
-            }
-            return null;
-        }else if(ResourceType.OS.name().equals(resourceType)){
-            List<Os> oses= (List<Os>) osRepository.findAll();
-            if (oses!=null){
-                for (Os os : oses) {
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("monitorId",os.getOsInfoId());
-                    //获取GE_MONITOR_OS表的NAME字段值
-                    jsonObject.put("monitorName", os.getName());
-                    jsonArray.add(jsonObject);
-                }
-                jsonMonitorNames = jsonArray.toJSONString();
-                return Replys.with(jsonMonitorNames).as(Json.class);
-            }
-            return null;
-        }else {
+        } else {
             return null;
         }
     }
@@ -206,10 +170,6 @@ public class ConfigEmergencyController {
         //获得监视器名称（也就是应用中文名）
         if(ResourceType.APPLICATION.name().equals(resourceType)){
             inv.addModel("monitorName",applicationService.findApplication(monitorId).getCnName());
-        }else if(ResourceType.OS.name().equals(resourceType)){
-            inv.addModel("monitorName",osRepository.findOne(monitorId).getName());
-        }else if(ResourceType.DB.name().equals(resourceType)){
-            inv.addModel("monitorName",infoRepository.findOne(monitorId).getName());
         }
         //写回应用id
         inv.getRequest().setAttribute("monitorId",monitorId);

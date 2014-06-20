@@ -2,7 +2,7 @@ package com.sinosoft.one.monitor.job;
 
 import com.sinosoft.one.monitor.alarm.repository.AlarmRepository;
 import com.sinosoft.one.monitor.application.repository.*;
-import com.sinosoft.one.monitor.db.oracle.domain.StaTimeEnum;
+import com.sinosoft.one.monitor.utils.StaTimeEnum;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;

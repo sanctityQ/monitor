@@ -15,7 +15,6 @@
 
     <script language="javascript" src="${ctx }/global/js/sinosoft.tabs.js"></script>
     <script language="javascript" src="${ctx }/global/js/highcharts.src.js"></script>
-    <script language="javascript" src="${ctx }/global/js/oracleMonitor.js"></script>
 
     <script type="text/javascript">
         <%--jqery时间戳控件--%>

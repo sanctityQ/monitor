@@ -1,4 +1,4 @@
-package com.sinosoft.one.monitor.db.oracle.domain;
+package com.sinosoft.one.monitor.utils;
 
 /**
  * User: Chunliang.Han
