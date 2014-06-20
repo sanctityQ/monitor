@@ -14,31 +14,31 @@ public interface MethodRepository extends PagingAndSortingRepository<Method, Str
 
     Method findByMethodName(String methodName);
 
-    @SQL("select * from GE_MONITOR_METHOD a where a.ID in (select m.METHOD_ID from GE_MONITOR_URL_METHOD m where m.url_id=?2)")
+    @SQL("select * from ge_monitor_method a where a.ID in (select m.METHOD_ID from ge_monitor_url_method m where m.url_id=?2)")
     Page<Method> selectMethodsOfUrlById(Pageable pageable, String urlId);
 
-    @SQL("select * from GE_MONITOR_METHOD a where a.ID in (select m.METHOD_ID from GE_MONITOR_URL_METHOD m where m.url_id=?1)")
+    @SQL("select * from ge_monitor_method a where a.ID in (select m.METHOD_ID from ge_monitor_url_method m where m.url_id=?1)")
     List<Method> selectMethodsOfUrlById(String urlId);
 
 
 
-    @SQL("update GE_MONITOR_METHOD set CLASS_NAME=?2,METHOD_NAME=?3,DESCRIPTION=?4,MODIFIER_ID=?5,MODIFY_TIME=sysdate where id=?1")
+    @SQL("update ge_monitor_method set CLASS_NAME=?2,METHOD_NAME=?3,DESCRIPTION=?4,MODIFIER_ID=?5,MODIFY_TIME=sysdate where id=?1")
     void updateMethod(String methodId, String className, String methodName, String description, String modifierId);
 
-    @SQL("delete GE_MONITOR_URL_METHOD a where a.URL_ID=?1 and a.METHOD_ID=?2")
+    @SQL("delete ge_monitor_url_method a where a.URL_ID=?1 and a.METHOD_ID=?2")
     void deleteUrlAndMethod(String urlId, String methodId);
 
-    //查询中间表GE_MONITOR_URL_METHOD中是否还有其它url与当前method关联
-    @SQL("select a.URL_ID from GE_MONITOR_URL_METHOD a where a.METHOD_ID=?1")
+    //查询中间表ge_monitor_url_method中是否还有其它url与当前method关联
+    @SQL("select a.URL_ID from ge_monitor_url_method a where a.METHOD_ID=?1")
     List<String> selectAllUrlIdsWithMethodId(String methodId);
 
-    @SQL("delete GE_MONITOR_URL_METHOD a where a.URL_ID=?1 and a.METHOD_ID in (?2)")
+    @SQL("delete ge_monitor_url_method a where a.URL_ID=?1 and a.METHOD_ID in (?2)")
     void batchDeleteUrlAndMethod(String urlId, String[] methodIds);
 
-    @SQL("delete GE_MONITOR_METHOD a where a.ID in (?1)")
+    @SQL("delete ge_monitor_method a where a.ID in (?1)")
     void batchDeleteMethod(String[] methodIds);
     
-    @SQL("select * from GE_MONITOR_METHOD a where a.ID =?1")
+    @SQL("select * from ge_monitor_method a where a.ID =?1")
     Method findMethodByid(String  methodId);
 }
 

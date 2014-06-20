@@ -15,7 +15,7 @@ import java.util.List;
  * Time: 下午4:55
  */
 public interface UrlResponseTimeRepository extends PagingAndSortingRepository<UrlResponseTime, String> {
-	@SQL("SELECT * FROM GE_MONITOR_URL_RESPONSE_TIME t WHERE t.application_id=?1 and t.record_time >= ?2 AND t.record_time <= ?3")
+	@SQL("SELECT * FROM ge_monitor_url_response_time t WHERE t.application_id=?1 and t.record_time >= ?2 AND t.record_time <= ?3")
 	List<UrlResponseTime> selectUrlResponseTimes(String applicationId, Date startDate, Date endDate);
 
 	/**
@@ -65,12 +65,12 @@ public interface UrlResponseTimeRepository extends PagingAndSortingRepository<Ur
 	 * @param endDate 结束时间
 	 * @return 响应时间列表
 	 */
-	@SQL("SELECT * FROM GE_MONITOR_URL_RESPONSE_TIME t WHERE t.application_id=?1 and t.url_id=?2 and t.record_time >= ?3 AND t.record_time <= ?4")
+	@SQL("SELECT * FROM ge_monitor_url_response_time t WHERE t.application_id=?1 and t.url_id=?2 and t.record_time >= ?3 AND t.record_time <= ?4")
 	List<UrlResponseTime> selectUrlResponseTimes(String applicationId, String urlId, Date startDate, Date endDate);
 
-    @SQL("delete from GE_MONITOR_URL_RESPONSE_TIME where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_url_response_time where RECORD_TIME<?1")
     void deleteByStartTime(Date startTime);
 
-    @SQL("SELECT * FROM GE_MONITOR_URL_RESPONSE_TIME t WHERE t.application_id=?1 and t.url_id=?2 and t.record_time = ?3")
+    @SQL("SELECT * FROM ge_monitor_url_response_time t WHERE t.application_id=?1 and t.url_id=?2 and t.record_time = ?3")
     UrlResponseTime selectUrlResponseTime(String applicationId, String urlId, Date currHour);
 }

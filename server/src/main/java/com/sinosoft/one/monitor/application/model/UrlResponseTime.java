@@ -16,7 +16,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "GE_MONITOR_URL_RESPONSE_TIME")
+@Table(name = "ge_monitor_url_response_time")
 public class UrlResponseTime {
 	/**
 	 * 主键ID

@@ -10,15 +10,15 @@ import java.util.List;
 
 public interface ResourcesRepository extends PagingAndSortingRepository<Resource, String> {
 
-    @SQL("delete from GE_MONITOR_RESOURCES where RESOURCE_ID in (?1)")
+    @SQL("delete from ge_monitor_resources where RESOURCE_ID in (?1)")
     void deleteByMoitorIds(List<String> monitorId);
 
-    @SQL("delete from GE_MONITOR_RESOURCES where RESOURCE_ID = ?1")
+    @SQL("delete from ge_monitor_resources where RESOURCE_ID = ?1")
     void deleteByMoitorId(String monitorId);
 
     Resource findByResourceId(String resourceId);
 
-    @SQL("select * from GE_MONITOR_RESOURCES a where a.RESOURCE_ID in (?1)")
+    @SQL("select * from ge_monitor_resources a where a.RESOURCE_ID in (?1)")
     List<Resource> findAllResourcesWithUrlIds(String[] urlIds);
 }
 

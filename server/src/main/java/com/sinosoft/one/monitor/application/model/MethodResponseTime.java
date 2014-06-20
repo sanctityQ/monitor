@@ -15,7 +15,7 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "GE_MONITOR_METHOD_RESPONSETIME")
+@Table(name = "ge_monitor_method_responsetime")
 public class MethodResponseTime {
 	private String id;
 	private String methodName;

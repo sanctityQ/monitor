@@ -17,10 +17,10 @@ public interface ApplicationRepository extends PagingAndSortingRepository<Applic
 
     List<Application> findByStatus(String status);
 
-    @SQL("select * from GE_MONITOR_APPLICATION a where a.STATUS='1' order by a.APPLICATION_NAME")
+    @SQL("select * from ge_monitor_application a where a.STATUS='1' order by a.APPLICATION_NAME")
     List<Application> findAllActiveApplication();
 
-    @SQL("select * from GE_MONITOR_APPLICATION a where a.STATUS='1' and application_Name=?1 and application_Ip=?2 and application_Port=?3")
+    @SQL("select * from ge_monitor_application a where a.STATUS='1' and application_Name=?1 and application_Ip=?2 and application_Port=?3")
     Application findByApplicationNameAndApplicationIpAndApplicationPort(String applicationName, String applicationIp, String applicationPort);
 
     @SQL("select * from GE_MONITOR_URL a where a.id in (select distinct b.URL_ID from GE_MONITOR_BIZ_SCENARIO_URL b " +
@@ -45,22 +45,22 @@ public interface ApplicationRepository extends PagingAndSortingRepository<Applic
             "right join GE_MONITOR_URL c on b.URL_ID=:urlId)")
     List<Method> selectAllMethodsWithUrlId(@Param("urlId") String urlId);
 
-    @SQL("update GE_MONITOR_APPLICATION a set a.STATUS='0' where a.ID=?1")
+    @SQL("update ge_monitor_application a set a.STATUS='0' where a.ID=?1")
     void deleteApplicationById(@Param("appId") String appId);
 
-    @SQL("update GE_MONITOR_APPLICATION a set a.CN_NAME=?2 ,a.APPLICATION_IP=?3, a.APPLICATION_PORT=?4, a.MODIFIER_ID=?5, a.MODIFY_TIME=sysdate,a.INTERVAL=?6 where a.ID=?1")
+    @SQL("update ge_monitor_application a set a.CN_NAME=?2 ,a.APPLICATION_IP=?3, a.APPLICATION_PORT=?4, a.MODIFIER_ID=?5, a.MODIFY_TIME=sysdate,a.INTERVAL=?6 where a.ID=?1")
     void updateApplication(String appId, String cnName, String applicationIp, String applicationPort, String modifierId, BigDecimal interval);
 
-    @SQL("select * from GE_MONITOR_APPLICATION a where a.STATUS='1'")
+    @SQL("select * from ge_monitor_application a where a.STATUS='1'")
     List<Application> findAllApplicationNames();
 
-    @SQL("select * from GE_MONITOR_APPLICATION a where a.id= ?1")
+    @SQL("select * from ge_monitor_application a where a.id= ?1")
     Application findApplicationbyId(String id);
     
-    @SQL("select * from GE_MONITOR_APPLICATION a where a.id= (select APPLICATION_ID from GE_MONITOR_BIZ_SCENARIO where id=?1 )")
+    @SQL("select * from ge_monitor_application a where a.id= (select APPLICATION_ID from GE_MONITOR_BIZ_SCENARIO where id=?1 )")
     Application findApplicationbyBizID(String BizID);
 
-    @SQL("select * from GE_MONITOR_APPLICATION a where a.STATUS='1' and a.application_ip=?1 and a.application_port=?2")
+    @SQL("select * from ge_monitor_application a where a.STATUS='1' and a.application_ip=?1 and a.application_port=?2")
     List<Application> findByIpAndPort(String ip, String port);
 }
 

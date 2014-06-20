@@ -16,7 +16,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "GE_MONITOR_EXCEPTION_INFO")
+@Table(name = "ge_monitor_exception_info")
 public class ExceptionInfo {
 	/**
 	 * 主键ID

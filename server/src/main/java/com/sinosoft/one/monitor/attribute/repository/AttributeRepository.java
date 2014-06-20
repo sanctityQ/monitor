@@ -20,7 +20,7 @@ public interface AttributeRepository extends PagingAndSortingRepository<Attribut
 	 */
 	Attribute findByResourceTypeAndAttribute(ResourceType resourceType, String attribute);
 
-    @SQL("select * from GE_MONITOR_ATTRIBUTE a where a.RESOURCE_TYPE=?1")
+    @SQL("select * from ge_monitor_attribute a where a.RESOURCE_TYPE=?1")
     List<Attribute> findAllAttributesWithResourceType(String resourceType);
 
 }

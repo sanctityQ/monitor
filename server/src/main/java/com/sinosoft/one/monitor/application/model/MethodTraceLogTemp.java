@@ -15,7 +15,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "GE_MONITOR_METHOD_TL_TEMP")
+@Table(name = "ge_monitor_method_tl_temp")
 public class MethodTraceLogTemp {
     /**
      * 主键ID

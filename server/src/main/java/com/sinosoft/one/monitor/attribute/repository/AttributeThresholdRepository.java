@@ -12,7 +12,7 @@ public interface AttributeThresholdRepository extends PagingAndSortingRepository
 
     public AttributeThreshold findByResourceIdAndAttributeIdAndThresholdId(String resourceId,String attributeId,String thresholdId);
     
-    @SQL("delete GE_MONITOR_ATTRIBUTE_THRESHOLD where THRESHOLD_ID =?1")
+    @SQL("delete ge_monitor_attribute_threshold where THRESHOLD_ID =?1")
     void deleteByThresholdID(String ThresholdID);
 }
 

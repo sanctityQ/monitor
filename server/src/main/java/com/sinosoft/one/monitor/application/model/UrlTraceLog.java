@@ -17,7 +17,7 @@ import java.util.List;
  * 用于记录URL追踪信息.
  */
 @Entity
-@Table(name = "GE_MONITOR_URL_TRACE_LOG")
+@Table(name = "ge_monitor_url_trace_log")
 public class UrlTraceLog {
 	/**
 	 * 主键ID

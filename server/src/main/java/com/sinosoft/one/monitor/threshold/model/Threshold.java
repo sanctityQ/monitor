@@ -19,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 * 阈值信息表
  */
 @Entity
-@Table(name="GE_MONITOR_THRESHOLD"
+@Table(name="ge_monitor_threshold"
 )
 public class Threshold  implements java.io.Serializable {
 

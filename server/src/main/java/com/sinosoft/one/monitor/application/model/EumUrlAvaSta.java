@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
  * 按照天为维度，记录具体该URL一天的可用性的统计信息
  */
 @Entity
-@Table(name = "GE_MONITOR_EUM_URL_AVA_STA")
+@Table(name = "ge_monitor_eum_url_ava_sta")
 public class EumUrlAvaSta implements java.io.Serializable {
 
     /**

@@ -58,6 +58,6 @@ public interface LogDetailRepository extends PagingAndSortingRepository<MethodTr
     @SQL("select * from ge_monitor_exception_info where alarm_id = ?1")
     ExceptionInfo selectExceptionInfoOfAlarm(String alarmDetailId);
 
-    @SQL("delete from GE_MONITOR_METHOD_TRACE_LOG where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_method_trace_log where RECORD_TIME<?1")
     void deleteByStartTime(Date startTime);
 }

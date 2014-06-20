@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "GE_MONITOR_APPLICATION")
+@Table(name = "ge_monitor_application")
 public class Application implements java.io.Serializable {
 
     /**

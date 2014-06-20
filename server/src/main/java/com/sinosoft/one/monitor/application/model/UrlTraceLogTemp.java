@@ -16,7 +16,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "GE_MONITOR_URL_TRACE_LOG_TEMP")
+@Table(name = "ge_monitor_url_trace_log_temp")
 public class UrlTraceLogTemp {
     /**
      * 主键ID

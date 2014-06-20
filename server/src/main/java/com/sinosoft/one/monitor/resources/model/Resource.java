@@ -12,7 +12,7 @@ import javax.persistence.*;
 * 资源表
  */
 @Entity
-@Table(name="GE_MONITOR_RESOURCES"
+@Table(name="ge_monitor_resources"
 )
 public class Resource implements java.io.Serializable {
 

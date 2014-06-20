@@ -12,7 +12,7 @@ import java.util.Date;
  * Time: 下午4:34
  */
 @Entity
-@Table(name = "GE_MONITOR_REQUEST_PER_MINUTE")
+@Table(name = "ge_monitor_request_per_minute")
 public class RequestPerMinute {
 	/**
 	 * 主键ID
