@@ -15,7 +15,7 @@ import java.util.Date;
  * Time: 上午6:12
  */
 @Entity
-@Table(name = "GE_MONITOR_METHOD_TRACE_LOG")
+@Table(name = "ge_monitor_method_trace_log")
 public class MethodTraceLog {
 	/**
 	 * 主键ID

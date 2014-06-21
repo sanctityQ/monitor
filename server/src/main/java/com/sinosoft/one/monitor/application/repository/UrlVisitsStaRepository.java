@@ -37,7 +37,7 @@ public interface UrlVisitsStaRepository extends PagingAndSortingRepository<UrlVi
 	@SQL("select * from ge_monitor_url_visits_sta where application_id=?1 and url_id=?2 and record_time between ?3 and ?4")
 	List<UrlVisitsSta> selectUrlVisitsSta(String applicationId, String urlId, Date startDate, Date endDate);
 
-    @SQL("delete from GE_MONITOR_URL_VISITS_STA where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_url_visits_sta where RECORD_TIME<?1")
     void deleteByStartTime(Date startTime);
 
     @SQL("select * from ge_monitor_url_visits_sta where application_id=?1 and url_id=?2 and record_time = ?3")

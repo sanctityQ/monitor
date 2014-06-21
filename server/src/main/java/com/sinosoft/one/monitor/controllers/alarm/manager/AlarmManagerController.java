@@ -8,8 +8,6 @@ import com.sinosoft.one.monitor.application.model.UrlTraceLog;
 import com.sinosoft.one.monitor.application.repository.ApplicationRepository;
 import com.sinosoft.one.monitor.application.repository.UrlTraceLogRepository;
 import com.sinosoft.one.monitor.common.ResourceType;
-import com.sinosoft.one.monitor.db.oracle.repository.InfoRepository;
-import com.sinosoft.one.monitor.os.linux.repository.OsRepository;
 import com.sinosoft.one.monitor.threshold.model.SeverityLevel;
 import com.sinosoft.one.mvc.web.Invocation;
 import com.sinosoft.one.mvc.web.annotation.Param;
@@ -47,10 +45,6 @@ public class AlarmManagerController {
     ApplicationRepository applicationRepository;
     @Autowired
     AlarmService alarmService;
-    @Autowired
-    OsRepository osRepository;
-    @Autowired
-    InfoRepository infoRepository;
     @Autowired
     UrlTraceLogRepository urlTraceLogRepository;
 
@@ -221,10 +215,6 @@ public class AlarmManagerController {
                     if(application!=null){
                         tempAlarm.setAppName(application.getCnName());
                     }
-                }else if(ResourceType.OS.name().equals(tempAlarm.getMonitorType())){
-                    tempAlarm.setAppName(osRepository.findOne(tempAlarm.getMonitorId()).getName());
-                }else if(ResourceType.DB.name().equals(tempAlarm.getMonitorType())){
-                    tempAlarm.setAppName(infoRepository.findOne(tempAlarm.getMonitorId()).getName());
                 }
                 //获得类型对应的中文名
                 tempAlarm.setMonitorType(ResourceType.valueOf(tempAlarm.getMonitorType()).cnName());
@@ -283,10 +273,6 @@ public class AlarmManagerController {
                 inv.addModel("urlTraceLogUrlId",StringUtils.isBlank(urlId)?"-1":urlId);
                 inv.addModel("urlTraceLogId",urlTraceLog.getId());
             }
-        }else if(ResourceType.OS.name().equals(dbAlarm.getMonitorType())){
-            inv.addModel("monitorName",osRepository.findOne(dbAlarm.getMonitorId()).getName());
-        }else if(ResourceType.DB.name().equals(dbAlarm.getMonitorType())){
-            inv.addModel("monitorName",infoRepository.findOne(dbAlarm.getMonitorId()).getName());
         }
         inv.addModel("alarm",dbAlarm);
         inv.addModel("_cnName",dbAlarm.getSeverity().cnName());

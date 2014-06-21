@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
  * 业务仿真URL信息表
  */
 @Entity
-@Table(name = "GE_MONITOR_EUM_URL")
+@Table(name = "ge_monitor_eum_url")
 public class EumUrl implements java.io.Serializable {
 
     /**

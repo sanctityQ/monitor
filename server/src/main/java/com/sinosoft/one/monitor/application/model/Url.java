@@ -17,7 +17,7 @@ import java.util.List;
  * 应用系统URL信息表
  */
 @Entity
-@Table(name = "GE_MONITOR_URL"
+@Table(name = "ge_monitor_url"
 )
 public class Url implements java.io.Serializable {
 

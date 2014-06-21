@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 下午4:55
  */
 public interface MethodResponseTimeRepository extends PagingAndSortingRepository<MethodResponseTime, String> {
-	@SQL("SELECT * FROM GE_MONITOR_METHOD_RESPONSETIME t WHERE t.application_id=?1 and t.url_id=?2" +
+	@SQL("SELECT * FROM ge_monitor_method_responsetime t WHERE t.application_id=?1 and t.url_id=?2" +
 			" and t.method_id in (?3) and to_char(t.record_time, 'yyyy-MM-dd HH24')=?4")
 	List<MethodResponseTime> selectMethodResponseTimes(String applicationId, String urlId, List<String> methodIds, String dateStr);
 
@@ -24,7 +24,7 @@ public interface MethodResponseTimeRepository extends PagingAndSortingRepository
 			"    max(mr.max_response_time) as max_response_time," +
 			"    sum(mr.total_response_time) as total_response_time," +
 			"    sum(mr.total_count) as total_count" +
-			"   FROM GE_MONITOR_METHOD_RESPONSETIME mr" +
+			"   FROM ge_monitor_method_responsetime mr" +
 			"  WHERE mr.APPLICATION_ID=?5" +
             "    and mr.url_id=?1 " +
             "    and mr.method_id=?2 " +
@@ -34,10 +34,10 @@ public interface MethodResponseTimeRepository extends PagingAndSortingRepository
 			"    GROUP BY mr.APPLICATION_ID,mr.url_id, mr.method_id")
 	MethodResponseTime selectMethodResponseTimes(String urlId, String methodId, Date startDate, Date endDate,String applicationId);
 
-    @SQL("delete from GE_MONITOR_METHOD_RESPONSETIME where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_method_responsetime where RECORD_TIME<?1")
     void deleteByStartTime(Date startTime);
 
-    @SQL("SELECT * FROM GE_MONITOR_METHOD_RESPONSETIME t " +
+    @SQL("SELECT * FROM ge_monitor_method_responsetime t " +
             "where t.method_id = ?3" +
             "  and t.url_id = ?2" +
             "  and t.APPLICATION_ID = ?1" +

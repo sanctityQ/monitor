@@ -15,12 +15,12 @@ import java.util.List;
  * Time: 下午4:57
  */
 public interface RequestPerMinuteRepository extends PagingAndSortingRepository<RequestPerMinute, String> {
-	@SQL("SELECT * FROM GE_MONITOR_REQUEST_PER_MINUTE t WHERE t.application_id=?1 and t.record_time >= ?2 AND t.record_time <= ?3")
+	@SQL("SELECT * FROM ge_monitor_request_per_minute t WHERE t.application_id=?1 and t.record_time >= ?2 AND t.record_time <= ?3")
 	List<RequestPerMinute> selectRequestPerMinutes(String applicationId, Date startDate, Date endDate);
 
-    @SQL("delete from GE_MONITOR_REQUEST_PER_MINUTE where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_request_per_minute where RECORD_TIME<?1")
     void deleteByStartTime(Date startTime);
 
-    @SQL("SELECT * FROM GE_MONITOR_REQUEST_PER_MINUTE t WHERE t.application_id=?1 and t.record_time = ?2")
+    @SQL("SELECT * FROM ge_monitor_request_per_minute t WHERE t.application_id=?1 and t.record_time = ?2")
     RequestPerMinute selectRequestPerMinute(String applicationId, Date currHour);
 }

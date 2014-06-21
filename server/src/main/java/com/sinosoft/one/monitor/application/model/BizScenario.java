@@ -17,7 +17,7 @@ import java.util.List;
  * 存储指定应用系统的业务场景信息
  */
 @Entity
-@Table(name = "GE_MONITOR_BIZ_SCENARIO"
+@Table(name = "ge_monitor_biz_scenario"
 )
 public class BizScenario implements java.io.Serializable {
 

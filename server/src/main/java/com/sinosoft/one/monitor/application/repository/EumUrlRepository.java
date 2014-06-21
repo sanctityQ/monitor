@@ -13,10 +13,10 @@ public interface EumUrlRepository extends PagingAndSortingRepository<EumUrl, Str
 
     List<EumUrl> findByUrlId(String urlId);
 
-    @SQL("select * from GE_MONITOR_EUM_URL a where a.URL_ID in (?1)")
+    @SQL("select * from ge_monitor_eum_url a where a.URL_ID in (?1)")
     List<EumUrl> findAllEumUrlsWithUrlIds(String[] urlIds);
 
-    @SQL("update GE_MONITOR_EUM_URL a set a.URL=?1 where a.URL_ID=?2")
+    @SQL("update ge_monitor_eum_url a set a.URL=?1 where a.URL_ID=?2")
     void updateEumUrlsWithUrlId(String url,String urlId);
 }
 

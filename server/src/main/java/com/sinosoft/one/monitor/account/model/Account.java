@@ -26,7 +26,7 @@ import com.google.common.base.Strings;
 
  */
 @Entity
-@Table(name="GE_MONITOR_ACCOUNT"
+@Table(name="ge_monitor_account"
 )
 public class Account  implements java.io.Serializable {
 

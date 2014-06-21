@@ -18,7 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 * 用户授权表
  */
 @Entity
-@Table(name="GE_MONITOR_ACCOUNT_AUTH"
+@Table(name="ge_monitor_account_auth"
 )
 public class Auth  implements java.io.Serializable {
 

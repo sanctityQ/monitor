@@ -13,7 +13,7 @@ import javax.persistence.*;
 * 属性信息表
  */
 @Entity
-@Table(name="GE_MONITOR_ATTRIBUTE"
+@Table(name="ge_monitor_attribute"
 )
 public class Attribute  implements java.io.Serializable {
 

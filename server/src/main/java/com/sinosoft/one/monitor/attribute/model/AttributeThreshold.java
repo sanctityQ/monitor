@@ -12,7 +12,7 @@ import javax.persistence.*;
 * 属性阈值信息表
  */
 @Entity
-@Table(name="GE_MONITOR_ATTRIBUTE_THRESHOLD"
+@Table(name="ge_monitor_attribute_threshold"
 )
 public class AttributeThreshold  implements java.io.Serializable {
 

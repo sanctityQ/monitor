@@ -18,7 +18,7 @@ import java.util.List;
  * 应用系统方法信息表
  */
 @Entity
-@Table(name = "GE_MONITOR_METHOD"
+@Table(name = "ge_monitor_method"
 )
 public class Method implements java.io.Serializable {
 

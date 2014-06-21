@@ -17,7 +17,7 @@ public interface ThresholdRepository extends PagingAndSortingRepository<Threshol
 	 * @param attributeId 属性ID
 	 * @return 阈值对象
 	 */
-	@SQL("SELECT mt.* FROM GE_MONITOR_THRESHOLD mt, GE_MONITOR_ATTRIBUTE_THRESHOLD mat WHERE mt.id=mat.THRESHOLD_ID and mat.RESOURCE_ID=?1 and mat.ATTRIBUTE_ID=?2")
+	@SQL("SELECT mt.* FROM ge_monitor_threshold mt, GE_MONITOR_ATTRIBUTE_THRESHOLD mat WHERE mt.id=mat.THRESHOLD_ID and mat.RESOURCE_ID=?1 and mat.ATTRIBUTE_ID=?2")
 	Threshold selectByResourceIdAndAttributeId(String resourceId, String attributeId);
 
 	@SQL("DELETE FROM ge_monitor_threshold  WHERE id in (?1) ")

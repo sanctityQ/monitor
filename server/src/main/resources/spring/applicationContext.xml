@@ -33,7 +33,7 @@
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="database">
-			<value>ORACLE</value>
+			<value>MYSQL</value>
 		</property>
 	</bean>
 	<!-- Jpa Entity Manager 配置 -->

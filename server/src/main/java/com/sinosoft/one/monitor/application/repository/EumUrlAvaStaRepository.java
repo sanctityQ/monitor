@@ -18,10 +18,10 @@ public interface EumUrlAvaStaRepository extends PagingAndSortingRepository<EumUr
      * @param eumUrlId
      * @return
      */
-    @SQL("select a.* from Ge_Monitor_Eum_Url_Ava_sta a where a.eum_url_id=?2 and a.record_time=?1")
+    @SQL("select a.* from ge_monitor_eum_url_ava_sta a where a.eum_url_id=?2 and a.record_time=?1")
     List<EumUrlAvaSta> findByRecordTimeAndEumUrlId(Date Date,String eumUrlId);
 
-    @SQL("select t.* from Ge_Monitor_Eum_Url_Ava_sta t " +
+    @SQL("select t.* from ge_monitor_eum_url_ava_sta t " +
             " where t.eum_url_id=?1" +
             "   and to_char(t.record_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') " +
             " order by t.record_time desc")

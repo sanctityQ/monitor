@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 * 应用系统可用性临时表
  */
 @Entity
-@Table(name="GE_MONITOR_EUM_URL_AVA"
+@Table(name="ge_monitor_eum_url_ava"
 )
 public class EumUrlAva  implements java.io.Serializable {
 

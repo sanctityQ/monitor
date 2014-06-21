@@ -189,47 +189,47 @@ public interface AlarmRepository extends PagingAndSortingRepository<Alarm, Strin
 	List<HealthStaForTime> selectHealthStaForDay(String monitorId, String subResourceType, String subResourceId, Date startDate, Date endDate);
 
     //获得告警信息列表
-    @SQL("select * from GE_MONITOR_ALARM a order by a.CREATE_TIME desc,a.SEVERITY asc")
+    @SQL("select * from ge_monitor_alarm a order by a.CREATE_TIME desc,a.SEVERITY asc")
     List<Alarm> findAllAlarms();
 
     //获得当前监视器的历史告警信息
-    @SQL("select * from GE_MONITOR_ALARM a where a.MONITOR_ID=?1  AND (a.severity='CRITICAL' or a.severity='WARNING') order by CREATE_TIME desc")
+    @SQL("select * from ge_monitor_alarm a where a.MONITOR_ID=?1  AND (a.severity='CRITICAL' or a.severity='WARNING') order by CREATE_TIME desc")
     List<Alarm> findByMonitorId(String monitorId);
 
     //获得当前监视器的历史告警信息
-    @SQL("select * from GE_MONITOR_ALARM a where a.MONITOR_ID=?1  AND (a.severity='CRITICAL' or a.severity='WARNING') order by CREATE_TIME desc")
+    @SQL("select * from ge_monitor_alarm a where a.MONITOR_ID=?1  AND (a.severity='CRITICAL' or a.severity='WARNING') order by CREATE_TIME desc")
     Page<Alarm> findByMonitorId(String monitorId,Pageable pageable);
 
     //批量删除告警信息
-    @SQL("delete GE_MONITOR_ALARM a where a.ID in (:alarmIds)")
+    @SQL("delete ge_monitor_alarm a where a.ID in (:alarmIds)")
     void batchDeleteAlarms(@Param("alarmIds")String[] alarmIds);
 
     //查询24小时内的告警信息
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
+    @SQL("select * from ge_monitor_alarm a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
             "#if(:givenTime=='30'){ where (a.CREATE_TIME between (select sysdate - interval '30' day from dual) and  sysdate)}" +
             "#if(:givenType!=''){ and a.MONITOR_TYPE = :givenType} AND (a.severity='CRITICAL' or a.severity='WARNING') order by a.CREATE_TIME desc")
     List<Alarm> findAlarmsWithGivenTimeAndType(@Param("givenTime") String givenTime,@Param("givenType") String givenType);
 
     //查询时间和类型条件
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
+    @SQL("select * from ge_monitor_alarm a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
             "#if(:givenTime=='30'){ where (a.CREATE_TIME between (select sysdate - interval '30' day from dual) and  sysdate)}" +
             "#if(:givenType!=''){ and a.MONITOR_TYPE = :givenType} AND (a.severity='CRITICAL' or a.severity='WARNING') order by a.CREATE_TIME desc")
     Page<Alarm> findAlarmsWithGivenTimeAndType(@Param("givenTime") String givenTime,@Param("givenType") String givenType,Pageable pageable);
 
     //查询时间和级别条件
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
+    @SQL("select * from ge_monitor_alarm a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
             "#if(:givenTime=='30'){ where (a.CREATE_TIME between (select sysdate - interval '30' day from dual) and  sysdate)}" +
             "#if(:givenLevel!=''){ and a.severity = :givenLevel}  order by a.CREATE_TIME desc")
     Page<Alarm> findAlarmsWithGivenTimeAndLevel(@Param("givenTime") String givenTime,@Param("givenLevel") String givenLevel,Pageable pageable);
 
     //查询类型和级别条件
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenType!=''){ where a.MONITOR_TYPE = :givenType}" +
+    @SQL("select * from ge_monitor_alarm a #if(:givenType!=''){ where a.MONITOR_TYPE = :givenType}" +
             "#if(:givenLevel!=''){ and a.severity = :givenLevel}  order by a.CREATE_TIME desc")
     Page<Alarm> findAlarmsWithGivenTypeAndLevel(@Param("givenType") String givenType,@Param("givenLevel") String givenLevel,Pageable pageable);
 
     
     //查询三个条件
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
+    @SQL("select * from ge_monitor_alarm a #if(:givenTime=='24') { where (a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate)}" +
             "#if(:givenTime=='30'){ where (a.CREATE_TIME between (select sysdate - interval '30' day from dual) and  sysdate)}" +
             "#if(:givenType!=''){ and a.MONITOR_TYPE = :givenType}" +
     		"#if(:givenLevel!=''){ and a.severity = :givenLevel}  order by a.CREATE_TIME desc")
@@ -237,25 +237,25 @@ public interface AlarmRepository extends PagingAndSortingRepository<Alarm, Strin
 
     
     //查询指定时间的告警信息
-    @SQL("select * from GE_MONITOR_ALARM a #if(?1=='24') { where a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate}" +
+    @SQL("select * from ge_monitor_alarm a #if(?1=='24') { where a.CREATE_TIME between (select sysdate - interval '24' hour from dual) and  sysdate}" +
             "#if(?1=='30'){ where a.CREATE_TIME between (select sysdate - interval '30' day from dual) and  sysdate} AND (a.severity='CRITICAL' or a.severity='WARNING')  order by a.CREATE_TIME desc")
     /*Page<Alarm> findAlarmsWithGivenTime(@Param("givenTime") String givenTime,Pageable pageable);*/
     Page<Alarm> findAlarmsWithGivenTime(String givenTime,Pageable pageable);
 
     //查询指定类型的告警信息
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenType!=''){ where a.MONITOR_TYPE = :givenType} AND (a.severity='CRITICAL' or a.severity='WARNING')  order by a.CREATE_TIME desc")
+    @SQL("select * from ge_monitor_alarm a #if(:givenType!=''){ where a.MONITOR_TYPE = :givenType} AND (a.severity='CRITICAL' or a.severity='WARNING')  order by a.CREATE_TIME desc")
     Page<Alarm> findAlarmsWithGivenType(@Param("givenType") String givenType,Pageable pageable);
     
     //查询指定级别的告警信息
-    @SQL("select * from GE_MONITOR_ALARM a #if(:givenLevel!=''){ where a.severity = :givenLevel}  order by a.CREATE_TIME desc")
+    @SQL("select * from ge_monitor_alarm a #if(:givenLevel!=''){ where a.severity = :givenLevel}  order by a.CREATE_TIME desc")
     Page<Alarm> findAlarmsWithGivenLevel(@Param("givenLevel") String givenLevel,Pageable pageable);
 
-    @SQL("delete from GE_MONITOR_ALARM where monitor_id in (?1)")
+    @SQL("delete from ge_monitor_alarm where monitor_id in (?1)")
     void deleteByMonitorIds(List<String> monitorId);
-    @SQL("delete from GE_MONITOR_ALARM where monitor_id = ?1")
+    @SQL("delete from ge_monitor_alarm where monitor_id = ?1")
     void deleteByMonitorId(String monitorId);
 
-    @SQL("delete from GE_MONITOR_ALARM where CREATE_TIME < (?1)")
+    @SQL("delete from ge_monitor_alarm where CREATE_TIME < (?1)")
     void deleteByStartTime(Date startTime);
 }
 

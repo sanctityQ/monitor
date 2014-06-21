@@ -10,10 +10,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.Date;
 
 public interface MethodTraceLogRepository extends PagingAndSortingRepository<UrlTraceLog, String> {
-    @SQL("delete from GE_MONITOR_URL_TRACE_LOG where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_url_trace_log where RECORD_TIME<?1")
     void deleteByStartTime(Date startTime);
 
-    @SQL("delete from GE_MONITOR_METHOD_TL_TEMP where RECORD_TIME<?1")
+    @SQL("delete from ge_monitor_method_tl_temp where RECORD_TIME<?1")
     void deleteTempByEndTime(Date endTime);
 
     @SQL("select min(a.consume_time) minResponseTime,\n" +

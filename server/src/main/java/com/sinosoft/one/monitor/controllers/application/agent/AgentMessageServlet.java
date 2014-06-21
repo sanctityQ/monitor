@@ -9,7 +9,6 @@ import com.sinosoft.monitor.agent.store.model.exception.ExceptionInfo;
 import com.sinosoft.monitor.agent.store.model.url.MethodTraceLog;
 import com.sinosoft.monitor.agent.store.model.url.TraceLog;
 import com.sinosoft.monitor.agent.store.model.url.UrlTraceLog;
-import com.sinosoft.one.monitor.application.domain.MessageEvent;
 import com.sinosoft.one.util.queue.QueuesHolder;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -18,12 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.zip.Inflater;
 
@@ -36,16 +34,28 @@ import java.util.zip.Inflater;
  */
 public class AgentMessageServlet extends HttpServlet {
 
-    public  static final String QUEUE_NAME="APP_AGENT_MSG";
+    public static final String QUEUE_NAME="APP_AGENT_MSG";
+    public static final String SERIAL_FILE_PATH = "META-INF/serial";
     private Logger logger = LoggerFactory.getLogger(AgentMessageServlet.class);
 
     private BlockingQueue<TraceLog> queue;
 
     private Schema<TraceLog> schema;
 
+    private long limitEndTime = 0;
+
+    private String limitEndTimeStr = "";
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
+    boolean canRun = false;
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+
+        setLimitEndTime();
+
         ExplicitIdStrategy.Registry r = new ExplicitIdStrategy.Registry();
         r = r.registerPojo(TraceLog.class,1);
         r = r.registerPojo(UrlTraceLog.class,2);
@@ -64,6 +74,10 @@ public class AgentMessageServlet extends HttpServlet {
             throws ServletException, IOException
     {
         long start = System.currentTimeMillis();
+
+        //校验产品终止时间
+        if (!validateLimitTime()) return;
+
         DataInputStream input = new DataInputStream(request.getInputStream());
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         byte[] data = null;
@@ -125,5 +139,44 @@ public class AgentMessageServlet extends HttpServlet {
 
         decompresser.end();
         return output;
+    }
+
+    private void setLimitEndTime(){
+
+        URL url = this.getClass().getClassLoader().getResource(SERIAL_FILE_PATH);
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(url.getFile()));
+            String serialCode = reader.readLine().trim();
+            limitEndTimeStr = Integer.valueOf(serialCode, 16)+"".trim();
+            limitEndTime = sdf.parse(limitEndTimeStr).getTime();
+            logger.warn("产品到期日：" + limitEndTimeStr);
+            canRun = true;
+        }catch (Exception e){
+            logger.error("没有找到文件：META-INF/serial，或serial码不正确！");
+        }finally {
+            if (reader!=null){
+                try {
+                    reader.close();
+                } catch (IOException e) {}
+            }
+        }
+    }
+
+    private boolean validateLimitTime(){
+        if (canRun){
+            //如果过期则返回
+            if (new Date().getTime()>limitEndTime){
+                logger.error("监控产品试用已到期,到期日："+limitEndTimeStr);
+                //设置为不可运行
+                canRun = false;
+                return false;
+            }
+        } else {
+            //不可运行重新加载文件
+            setLimitEndTime();
+            return false;
+        }
+        return true;
     }
 }
